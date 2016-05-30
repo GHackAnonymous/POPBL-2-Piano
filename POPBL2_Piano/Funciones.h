@@ -36,18 +36,27 @@ typedef struct Melodia
 	struct Melodia *pSig;
 } SONIDO, *PSONIDO;
 
-int Abrir_Archivo(int tecla);
-int Comparar_Tecla(int tecla);
-PSONIDO Crear_Cadena(PSONIDO cabesa);
-int Escanear_Tecla();
-void Grabar(FILE * fp, PSONIDO cabesa);
-void Grabar_Archivo(PSONIDO cabesa);
-int Leer_Cabesa(PSONIDO cabesa);
-void Reproducir(FILE * fp, PSONIDO cabesa);
-void Reproducir_Tecla(int tecla);
-void Tecla();
-PSONIDO Cargar_Archivo(int tecla);
-void Saltar_Cadena(PSONIDO aux);
+//FILE* abrir_archivo(char funcion); // ok
+int abrir_archivo(char funcion); // ok
+int comparar_tecla(int tecla);
+PSONIDO crear_cadena(PSONIDO cabesa, int tecla); // OK
+int escanear_Tecla();
+//void grabar(FILE* fp, PSONIDO cabesa);
+void grabar(int fp, PSONIDO cabesa);
+void grabar_archivo(PSONIDO cabesa);
+int leer_cabesa(PSONIDO aux); //ok
+//void reproducir(FILE* fp, PSONIDO cabesa);
+void reproducir(int  fp, PSONIDO cabesa);
+void reproducir_sonido(int tecla);
+void tecla();
+//PSONIDO cargar_archivo(FILE* fp, int tecla);
+PSONIDO cargar_archivo(int fp, int tecla);
+PSONIDO saltar_cadena(PSONIDO aux); // ok
+PSONIDO cargar_sonido(); // ok
+void guardar_archivo(PSONIDO cabesa); //ok
+//void escribir_nota(FILE* fp, PSONIDO cabesa); //ok
+void escribir_nota(int fp, PSONIDO cabesa); //ok
+PSONIDO guardar_notas(PSONIDO cabesa, int nota); //ok
 
 
 
