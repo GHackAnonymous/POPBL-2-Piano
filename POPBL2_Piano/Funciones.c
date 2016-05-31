@@ -165,32 +165,46 @@ int comparar_tecla(int tecla)
 
 	}
 }
+void lanzar_comando(char comando[])
+{
+	//strcat(comando, archivo_audio);
+	printf(comando);//aqui
+	system(comando);
+}
 void reproducir_sonido(int tecla)
 {
-
-	char comando[] = "start wmplayer \"C:\\Users\\lucas\\Downloads\\POPBL2_Piano\\POPBL2_Piano\\PIANO\\01.wav\"";
+	
+	char comando[] = "start wmplayer \"%cd%\\00.wav\"";
+	//char archivo_audio[] = "00.wav\"";
 	if (tecla >= LA)
 	{
-		comando[73] = 49;
+		comando[21] = 49;
 		switch (tecla)
 		{
 		case LA:
-			comando[74] = 48;
+			comando[22] = 48;
+			lanzar_comando(comando); 
 			break;
 		case LAS:
-			comando[74] = 49;
+			comando[22] = 49;
+			lanzar_comando(comando);
 			break;
 		case SI:
-			comando[74] = 50;
+			comando[22] = 50;
+			lanzar_comando(comando);
+			break;
+		default:
 			break;
 		}
 	}
-	else
+	else if(tecla != 0)
 	{
-		comando[74] = ("%d", tecla);
+		comando[22] = ("%d", tecla);
+		lanzar_comando(comando);
 	}
-	printf(comando);
-	system(comando);
+	////strcat(comando, archivo_audio);
+	//printf(comando);
+	//system(comando);
 }
 
 void reproducir(PSONIDO cabesa)

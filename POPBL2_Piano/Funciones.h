@@ -81,5 +81,6 @@ PSONIDO guardar_notas(PSONIDO cabesa, int nota); //ok
 void tocar();
 PSONIDO grabar(PSONIDO cabesa);
 int cargar_de_archivo(FILE* fp, int tecla);
+void lanzar_comando(char comando[]);
 
 #endif
