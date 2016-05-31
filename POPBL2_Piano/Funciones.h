@@ -1,4 +1,4 @@
-/** 
+/**
 *  @file Funciones.h
 *  @brief Function prototypes for the console driver.
 *
@@ -20,14 +20,44 @@
 #define Funciones
 
 #include "Funciones.h"
+#include<windows.h>
+#include<conio.h>
+#include<stdio.h>
+#include<stdlib.h>
+#include<dos.h>
+
+#define DO 49
+#define DOS 50
+#define RE 51
+#define RES 52
+#define MI 53
+#define FA 54
+#define MIS 55
+#define SOL 56
+#define SOLS 57
+#define LA 58
+#define LAS 59
+#define SI 60
+#define a 97
+#define s 115
+#define e 101
+#define d 100
+#define w 119
+#define f 102
+#define t 116
+#define g 103
+#define y 121
+#define h 104
+#define u 117
+#define j 106
 
 
 /** @brief explicacion corta
 *
 *  Comentario de que hacer
 *
-*  @param ch 
-*  @return 
+*  @param ch
+*  @return
 */
 
 typedef struct Melodia
@@ -36,28 +66,20 @@ typedef struct Melodia
 	struct Melodia *pSig;
 } SONIDO, *PSONIDO;
 
-//FILE* abrir_archivo(char funcion); // ok
-int abrir_archivo(char funcion); // ok
-int comparar_tecla(int tecla);
+FILE* abrir_archivo(int funcion); // ok
+int comparar_tecla(int tecla); //ok
 PSONIDO crear_cadena(PSONIDO cabesa, int tecla); // OK
-int escanear_Tecla();
-//void grabar(FILE* fp, PSONIDO cabesa);
-void grabar(int fp, PSONIDO cabesa);
-void grabar_archivo(PSONIDO cabesa);
-int leer_cabesa(PSONIDO aux); //ok
-//void reproducir(FILE* fp, PSONIDO cabesa);
-void reproducir(int  fp, PSONIDO cabesa);
-void reproducir_sonido(int tecla);
-void tecla();
-//PSONIDO cargar_archivo(FILE* fp, int tecla);
-PSONIDO cargar_archivo(int fp, int tecla);
+int escanear_tecla(); //ok
+int leer_cadena(PSONIDO aux); //ok
+void reproducir(PSONIDO cabesa); // ok
+void reproducir_sonido(int tecla); //ok
 PSONIDO saltar_cadena(PSONIDO aux); // ok
-PSONIDO cargar_sonido(); // ok
+PSONIDO cargar_sonido(PSONIDO cabesa); // ok
 void guardar_archivo(PSONIDO cabesa); //ok
-//void escribir_nota(FILE* fp, PSONIDO cabesa); //ok
-void escribir_nota(int fp, PSONIDO cabesa); //ok
+void escribir_nota(FILE* fp, PSONIDO cabesa); //ok
 PSONIDO guardar_notas(PSONIDO cabesa, int nota); //ok
-
-
+void tocar();
+PSONIDO grabar(PSONIDO cabesa);
+int cargar_de_archivo(FILE* fp, int tecla);
 
 #endif
