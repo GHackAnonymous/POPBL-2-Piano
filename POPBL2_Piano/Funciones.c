@@ -75,8 +75,13 @@ PSONIDO cargar_sonido(PSONIDO cabesa)
 	cabesa = NULL;
 	tecla = 0;
 	fp = abrir_archivo(funcion);
-	while (cargar_de_archivo(fp, tecla) != NULL)//necesita funcion;
+	//tecla = cargar_de_archivo(fp, tecla);
+	//while (cargar_de_archivo(fp, tecla) != NULL)//necesita funcion;  //Fallo AQUI TECLA DESPUES OBTIONE 0
+	while ((tecla = cargar_de_archivo(fp, tecla)) != NULL)//necesita funcion;  //Fallo AQUI TECLA DESPUES OBTIONE 0
+	//while (tecla != NULL)//necesita funcion;  //Fallo AQUI TECLA DESPUES OBTIONE 0
 	{
+		//tecla = cargar_de_archivo(fp, tecla);
+		//cabesa = crear_cadena(cabesa, tecla);
 		cabesa = crear_cadena(cabesa, tecla);
 		tecla = 0;
 	}
@@ -108,10 +113,10 @@ PSONIDO guardar_notas(PSONIDO cabesa, int nota)
 }
 int leer_cadena(PSONIDO *aux)//aux* está apuntando a cabesa desde el main
 {
-	int tecla;
+	int tecla; // Tecla contiene MIERDAAAAA
 
-	tecla = (*aux)->tecla;
-	(*aux) = (*aux)->pSig;
+	tecla = ((*aux)->tecla);
+	(*aux) = ((*aux)->pSig);
 
 	return tecla;
 }
@@ -204,17 +209,24 @@ void reproducir_sonido(int tecla)
 
 void reproducir(PSONIDO cabesa)
 {
-	PSONIDO * aux = NULL;
+	//PSONIDO * aux = NULL;
+	PSONIDO* aux = NULL;
 
 	cabesa = cargar_sonido(cabesa);
 
-	aux = &cabesa;
+	//aux = &cabesa; // No se Copia
+	aux = cabesa; // No se Copia
 
 	while (leer_cadena(*aux) != NULL)
 	{
 		int tecla = leer_cadena(*aux);
 		reproducir_sonido(tecla);
 	}
+	/*while (leer_cadena(aux) != NULL)
+	{
+		int tecla = leer_cadena(aux);
+		reproducir_sonido(tecla);
+	}*/
 
 }
 void tocar()
