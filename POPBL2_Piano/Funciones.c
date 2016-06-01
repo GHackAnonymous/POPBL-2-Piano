@@ -111,12 +111,12 @@ PSONIDO guardar_notas(PSONIDO cabesa, int nota)
 	cabesa = crear_cadena(cabesa, nota);
 	return cabesa;
 }
-int leer_cadena(PSONIDO *aux)//aux* está apuntando a cabesa desde el main
+int leer_cadena(PSONIDO aux)//aux* está apuntando a cabesa desde el main (HAY QUE COMPROBAR, NO DIGO QUE NO SEA CIERTO)
 {
-	int tecla; // Tecla contiene MIERDAAAAA
-
-	tecla = ((*aux)->tecla);
-	(*aux) = ((*aux)->pSig);
+	int tecla = 0; 
+	if (aux != NULL)
+		tecla = (aux)->tecla; // SIEMPRE SE QUEDA EN LA PRIMERO NOTA
+	//(aux) = (aux)->pSig; // ESTO HAY QUE HACER EN EUNA FUNCION ANTES (UNA MAS ARRIBA EN LA ESCALERA DE FUNCIONES)
 
 	return tecla;
 }
@@ -210,17 +210,18 @@ void reproducir_sonido(int tecla)
 void reproducir(PSONIDO cabesa)
 {
 	//PSONIDO * aux = NULL;
-	PSONIDO* aux = NULL;
+	PSONIDO aux = NULL;
 
 	cabesa = cargar_sonido(cabesa);
 
 	//aux = &cabesa; // No se Copia
 	aux = cabesa; // No se Copia
 
-	while (leer_cadena(*aux) != NULL)
+	while (leer_cadena(aux) != NULL)  // DEBUENVE DE NUEVO LA CADENA DESDE EL PRINCIPIO
 	{
-		int tecla = leer_cadena(*aux);
+		int tecla = leer_cadena(aux);
 		reproducir_sonido(tecla);
+		aux = aux->pSig;
 	}
 	/*while (leer_cadena(aux) != NULL)
 	{
