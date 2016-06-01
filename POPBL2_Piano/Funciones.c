@@ -167,15 +167,13 @@ int comparar_tecla(int tecla)
 }
 void lanzar_comando(char comando[])
 {
-	//strcat(comando, archivo_audio);
-	printf(comando);//aqui
+	printf(comando);
 	system(comando);
 }
 void reproducir_sonido(int tecla)
 {
 	
 	char comando[] = "start wmplayer \"%cd%\\00.wav\"";
-	//char archivo_audio[] = "00.wav\"";
 	if (tecla >= LA)
 	{
 		comando[21] = 49;
@@ -202,9 +200,6 @@ void reproducir_sonido(int tecla)
 		comando[22] = ("%d", tecla);
 		lanzar_comando(comando);
 	}
-	////strcat(comando, archivo_audio);
-	//printf(comando);
-	//system(comando);
 }
 
 void reproducir(PSONIDO cabesa)
