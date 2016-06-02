@@ -174,6 +174,7 @@ void lanzar_comando(char comando[])
 {
 	printf(comando);
 	system(comando);
+	Sleep(2000);
 }
 void reproducir_sonido(int tecla)
 {
