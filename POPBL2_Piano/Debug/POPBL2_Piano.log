@@ -1,1 +1,6 @@
-﻿  POPBL2_Piano.vcxproj -> C:\Users\GHackAnonymous\documents\visual studio 2015\Projects\POPBL2_Piano\Debug\POPBL2_Piano.exe
+﻿  Main.c
+  Funciones.c
+c:\users\ghackanonymous\documents\visual studio 2015\projects\popbl2_piano\popbl2_piano\funciones.c(80): warning C4047: '!=': 'int' es distinto en los niveles de direccionamiento indirecto de 'void *'
+c:\users\ghackanonymous\documents\visual studio 2015\projects\popbl2_piano\popbl2_piano\funciones.c(221): warning C4047: '!=': 'int' es distinto en los niveles de direccionamiento indirecto de 'void *'
+  Generando código...
+  POPBL2_Piano.vcxproj -> C:\Users\GHackAnonymous\documents\visual studio 2015\Projects\POPBL2_Piano\Debug\POPBL2_Piano.exe

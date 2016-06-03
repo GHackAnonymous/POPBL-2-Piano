@@ -229,6 +229,7 @@ void reproducir(PSONIDO cabesa)
 		int tecla = leer_cadena(aux);
 		reproducir_sonido(tecla);
 	}*/
+	liberar(cabesa);
 
 }
 void tocar()
@@ -254,5 +255,16 @@ PSONIDO grabar(PSONIDO cabesa)
 		guardar_archivo(cabesa);
 
 	}
+	liberar(cabesa);
 	return cabesa;
+}
+void liberar(PSONIDO cabesa)
+{
+	PSONIDO aux;
+	while (cabesa->pSig != NULL)
+	{
+		aux = cabesa;
+		cabesa = cabesa->pSig;
+		free(aux);
+	}
 }

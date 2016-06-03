@@ -24,15 +24,16 @@ int main()
 	{
 	case 1:
 		reproducir(cabesa);
+		
 		break;
 	case 2:
 		tocar();
 		break;
 	case 3:
 		grabar(cabesa);
+		
 		break;
 	}
-
 
 	return 0;
 }
