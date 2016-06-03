@@ -1,13 +1,38 @@
 #define _CRT_SECURE_NO_WARNINGS
 
 #include "Funciones.h"
-#include <windows.h>
-#include <conio.h>
+//#include <windows.h>
+//#include <conio.h>
 #include <stdio.h>
 #include <stdlib.h>
-#include <dos.h>
+//#include <dos.h>
 #include <string.h>
+#include <unistd.h>   //_getch*/
+#include <termios.h>  //_getch*/
 
+char getch(){
+    /*#include <unistd.h>   //_getch*/
+    /*#include <termios.h>  //_getch*/
+    char buf=0;
+    struct termios old={0};
+    fflush(stdout);
+    if(tcgetattr(0, &old)<0)
+        perror("tcsetattr()");
+    old.c_lflag&=~ICANON;
+    old.c_lflag&=~ECHO;
+    old.c_cc[VMIN]=1;
+    old.c_cc[VTIME]=0;
+    if(tcsetattr(0, TCSANOW, &old)<0)
+        perror("tcsetattr ICANON");
+    if(read(0,&buf,1)<0)
+        perror("read()");
+    old.c_lflag|=ICANON;
+    old.c_lflag|=ECHO;
+    if(tcsetattr(0, TCSADRAIN, &old)<0)
+        perror ("tcsetattr ~ICANON");
+    //printf("%c\n",buf);
+    return buf;
+ }
 
 PSONIDO crear_cadena(PSONIDO cabesa, int tecla)
 {
@@ -16,7 +41,7 @@ PSONIDO crear_cadena(PSONIDO cabesa, int tecla)
 
 	aux = cabesa;
 
-	nuevo = malloc(sizeof(SONIDO));//crear_cadena
+	nuevo = malloc(sizeof(SONIDO));
 	nuevo->tecla = tecla;
 	if (cabesa == NULL)
 	{
@@ -75,13 +100,9 @@ PSONIDO cargar_sonido(PSONIDO cabesa)
 	cabesa = NULL;
 	tecla = 0;
 	fp = abrir_archivo(funcion);
-	//tecla = cargar_de_archivo(fp, tecla);
-	//while (cargar_de_archivo(fp, tecla) != NULL)//necesita funcion;  //Fallo AQUI TECLA DESPUES OBTIONE 0
-	while ((tecla = cargar_de_archivo(fp, tecla)) != NULL)//necesita funcion;  //Fallo AQUI TECLA DESPUES OBTIONE 0
-	//while (tecla != NULL)//necesita funcion;  //Fallo AQUI TECLA DESPUES OBTIONE 0
+	
+	while ((tecla = cargar_de_archivo(fp, tecla)) != NULL)
 	{
-		//tecla = cargar_de_archivo(fp, tecla);
-		//cabesa = crear_cadena(cabesa, tecla);
 		cabesa = crear_cadena(cabesa, tecla);
 		tecla = 0;
 	}
@@ -111,19 +132,20 @@ PSONIDO guardar_notas(PSONIDO cabesa, int nota)
 	cabesa = crear_cadena(cabesa, nota);
 	return cabesa;
 }
-int leer_cadena(PSONIDO aux)//aux* está apuntando a cabesa desde el main (HAY QUE COMPROBAR, NO DIGO QUE NO SEA CIERTO)
+int leer_cadena(PSONIDO aux)
 {
 	int tecla = 0; 
 	if (aux != NULL)
-		tecla = (aux)->tecla; // SIEMPRE SE QUEDA EN LA PRIMERO NOTA
-	//(aux) = (aux)->pSig; // ESTO HAY QUE HACER EN EUNA FUNCION ANTES (UNA MAS ARRIBA EN LA ESCALERA DE FUNCIONES)
+	{
+		tecla = (aux)->tecla; 
+	}
 
 	return tecla;
 }
 int escanear_tecla()
 {
-	int tecla = _getch();
-	return tecla;
+        int tecla = getch();
+        return tecla;
 }
 int comparar_tecla(int tecla)
 {
@@ -174,27 +196,27 @@ void lanzar_comando(char comando[])
 {
 	printf(comando);
 	system(comando);
-	Sleep(2000);
+	sleep(0.5);
 }
 void reproducir_sonido(int tecla)
 {
 	
-	char comando[] = "start wmplayer \"%cd%\\00.wav\"";
+	char comando[] = "aplay ./00.wav";
 	if (tecla >= LA)
 	{
-		comando[21] = 49;
+		comando[8] = 49;
 		switch (tecla)
 		{
 		case LA:
-			comando[22] = 48;
+			comando[9] = 48;
 			lanzar_comando(comando); 
 			break;
 		case LAS:
-			comando[22] = 49;
+			comando[9] = 49;
 			lanzar_comando(comando);
 			break;
 		case SI:
-			comando[22] = 50;
+			comando[9] = 50;
 			lanzar_comando(comando);
 			break;
 		default:
@@ -203,33 +225,26 @@ void reproducir_sonido(int tecla)
 	}
 	else if(tecla != 0)
 	{
-		comando[22] = ("%d", tecla);
+		comando[9] = ("%d", tecla);
 		lanzar_comando(comando);
 	}
 }
 
 void reproducir(PSONIDO cabesa)
 {
-	//PSONIDO * aux = NULL;
 	PSONIDO aux = NULL;
 
 	cabesa = cargar_sonido(cabesa);
 
-	//aux = &cabesa; // No se Copia
-	aux = cabesa; // No se Copia
+	aux = cabesa; 
 
-	while (leer_cadena(aux) != NULL)  // DEBUENVE DE NUEVO LA CADENA DESDE EL PRINCIPIO
+	while (leer_cadena(aux) != NULL)  
 	{
 		int tecla = leer_cadena(aux);
 		reproducir_sonido(tecla);
 		aux = aux->pSig;
 	}
-	/*while (leer_cadena(aux) != NULL)
-	{
-		int tecla = leer_cadena(aux);
-		reproducir_sonido(tecla);
-	}*/
-
+        liberar(cabesa);
 }
 void tocar()
 {
@@ -247,12 +262,24 @@ PSONIDO grabar(PSONIDO cabesa)
 	int tecla = 0;
 	while (nuestra_tecla != 0)
 	{
-		tecla = escanear_tecla();
-		nuestra_tecla = comparar_tecla(tecla);
-		reproducir_sonido(nuestra_tecla);
+		tecla = escanear_tecla(); //ok
+		nuestra_tecla = comparar_tecla(tecla); //ok
+		reproducir_sonido(nuestra_tecla); //ok
 		cabesa = guardar_notas(cabesa, nuestra_tecla);
 		guardar_archivo(cabesa);
 
 	}
+        liberar(cabesa);
 	return cabesa;
 }
+void liberar(PSONIDO cabesa)
+{
+    PSONIDO aux;
+    while(cabesa->pSig != NULL)
+    {
+        aux = cabesa;
+        cabesa = cabesa->pSig;
+        free(aux);
+    }
+}
+

@@ -1,15 +1,17 @@
 #define _CRT_SECURE_NO_WARNINGS
 
 #include "Funciones.h"
-#include<windows.h>
-#include<conio.h>
+//#include<windows.h>
+//#include<conio.h>
 #include<stdio.h>
 #include<stdlib.h>
-#include<dos.h>
+//#include<dos.h>
 #include <string.h>
+#include <unistd.h>   //_getch*/
+#include <termios.h>  //_getch*/
 
 int main()
-{
+{       
 	char str[128];
 	PSONIDO cabesa = NULL;
 

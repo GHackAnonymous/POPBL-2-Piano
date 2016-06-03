@@ -6,7 +6,7 @@
 *  driver and eventually any macros, constants,
 *  or global variables you will need.
 *
-*  @author Eder Gómez de Segura (eder.gomezp@alumni.mondragon.edu)
+*  @author Eder Gï¿½mez de Segura (eder.gomezp@alumni.mondragon.edu)
 *  @author
 *  @author
 *  @author
@@ -20,11 +20,13 @@
 #define Funciones
 
 #include "Funciones.h"
-#include<windows.h>
-#include<conio.h>
+//#include<windows.h>
+//#include<conio.h>
 #include<stdio.h>
 #include<stdlib.h>
-#include<dos.h>
+//#include<dos.h>
+#include <unistd.h>   //_getch*/
+#include <termios.h>  //_getch*/
 
 #define DO 49
 #define DOS 50
@@ -66,6 +68,7 @@ typedef struct Melodia
 	struct Melodia *pSig;
 } SONIDO, *PSONIDO;
 
+char getch(); //ok
 FILE* abrir_archivo(int funcion); // ok
 int comparar_tecla(int tecla); //ok
 PSONIDO crear_cadena(PSONIDO cabesa, int tecla); // OK
@@ -82,5 +85,7 @@ void tocar();
 PSONIDO grabar(PSONIDO cabesa);
 int cargar_de_archivo(FILE* fp, int tecla);
 void lanzar_comando(char comando[]);
+void liberar(PSONIDO cabesa);
+
 
 #endif
