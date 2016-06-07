@@ -12,15 +12,20 @@
 
 int main()
 {       
-	char str[128];
+	//char str[128];
 	PSONIDO cabesa = NULL;
 
-	int opcion = 0;
+	//int opcion = 0;
 
-	printf("In: 1-Repoducir 2-Tocar 3-grabar:\n");
-	printf("->");
-	fgets(str, 128, stdin);
-	sscanf(str, "%d", &opcion);
+	//printf("In: 1-Repoducir 2-Tocar 3-grabar:\n");
+	//printf("->");
+	//fgets(str, 128, stdin);
+	//sscanf(str, "%d", &opcion);
+
+
+
+
+	// tenemos que traer la señal de la raspberry pi
 
 	switch (opcion)
 	{
