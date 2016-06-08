@@ -28,6 +28,31 @@
 #include <unistd.h>   //_getch*/
 #include <termios.h>  //_getch*/
 
+//#define DO 49
+//#define DOS 50
+//#define RE 51
+//#define RES 52
+//#define MI 53
+//#define FA 54
+//#define MIS 55
+//#define SOL 56
+//#define SOLS 57
+//#define LA 58
+//#define LAS 59
+//#define SI 60
+//#define a 97
+//#define s 115
+//#define e 101
+//#define d 100
+//#define w 119
+//#define f 102
+//#define t 116
+//#define g 103
+//#define y 121
+//#define h 104
+//#define u 117
+//#define j 106
+
 #define DO 49
 #define DOS 50
 #define RE 51
@@ -40,18 +65,18 @@
 #define LA 58
 #define LAS 59
 #define SI 60
-#define a 97
-#define s 115
-#define e 101
-#define d 100
-#define w 119
-#define f 102
-#define t 116
-#define g 103
-#define y 121
-#define h 104
-#define u 117
-#define j 106
+#define a 0
+#define s 2
+#define e 3
+#define d 4
+#define w 1
+#define f 5
+#define t 6
+#define g 7
+#define y 8
+#define h 9
+#define u 10
+#define j 11
 
 
 /** @brief explicacion corta
@@ -72,7 +97,7 @@ char getch(); //ok
 FILE* abrir_archivo(int funcion); // ok
 int comparar_tecla(int tecla); //ok
 PSONIDO crear_cadena(PSONIDO cabesa, int tecla); // OK
-int escanear_tecla(); //ok
+/*int escanear_tecla();*/ //ok
 int leer_cadena(PSONIDO aux); //ok
 void reproducir(PSONIDO cabesa); // ok
 void reproducir_sonido(int tecla); //ok
@@ -86,6 +111,7 @@ PSONIDO grabar(PSONIDO cabesa);
 int cargar_de_archivo(FILE* fp, int tecla);
 void lanzar_comando(char comando[]);
 void liberar(PSONIDO cabesa);
+int detectar_gpio();
 
 
 #endif

@@ -192,6 +192,21 @@ int comparar_tecla(int tecla)
 
 	}
 }
+int detectar_gpio()
+{
+	int boton = -1;
+	int i = 0;
+	for (i = 0; i <= 11; i++)
+	{
+		int impulso = digitalRead(i);
+		if(impulso == 1)
+		{
+			boton = i;
+			break;
+		}
+	}
+	return boton;
+}
 void lanzar_comando(char comando[])
 {
 	printf(comando);
@@ -251,7 +266,8 @@ void tocar()
 	int tecla = 0;
 	do
 	{
-		tecla = escanear_tecla();
+		//tecla = escanear_tecla();
+		tecla = detectar_gpio();
 		int nuestra_tecla = comparar_tecla(tecla);
 		reproducir_sonido(nuestra_tecla);
 	} while (tecla != 27);
@@ -262,7 +278,8 @@ PSONIDO grabar(PSONIDO cabesa)
 	int tecla = 0;
 	while (nuestra_tecla != 0)
 	{
-		tecla = escanear_tecla(); //ok
+		//tecla = escanear_tecla(); //ok
+		tecla = detectar_gpio();
 		nuestra_tecla = comparar_tecla(tecla); //ok
 		reproducir_sonido(nuestra_tecla); //ok
 		cabesa = guardar_notas(cabesa, nuestra_tecla);
@@ -282,4 +299,3 @@ void liberar(PSONIDO cabesa)
         free(aux);
     }
 }
-
