@@ -27,6 +27,7 @@
 //#include<dos.h>
 #include <unistd.h>   //_getch*/
 #include <termios.h>  //_getch*/
+#include <wiringPi.h>
 
 //#define DO 49
 //#define DOS 50

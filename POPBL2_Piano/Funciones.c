@@ -9,6 +9,7 @@
 #include <string.h>
 #include <unistd.h>   //_getch*/
 #include <termios.h>  //_getch*/
+#include <wiringPi.h>
 
 char getch(){
     /*#include <unistd.h>   //_getch*/
