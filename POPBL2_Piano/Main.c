@@ -40,10 +40,12 @@ int main()
 	pinMode(11, INPUT); //9 es el correspondiente del chip al pin 32
 	pinMode(12, INPUT); //10 es el correspondiente del chip al pin 33
 	pinMode(13, INPUT); //11 es el correspondiente del chip al pin 35
-
-
-
-
+	pinMode(14, INPUT); // Cool rumner  p1 j1
+	pinMode(22, INPUT); // cool runner p2 j1
+	pinMode(29, OUTPUT); // cool runner p7 j1
+	pinMode(27, OUTPUT); // cool runner p8 j1
+	pinMode(26, INPUT); // cool runner p3 j1
+	pinMode(25, INPUT); // cool runner p4 j1
 	// tenemos que traer la señal de la raspberry pi
 
 	switch (opcion)
