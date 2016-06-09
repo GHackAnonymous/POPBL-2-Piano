@@ -176,39 +176,90 @@ void lanzar_comando(char comando[])
 	system(comando);
 	Sleep(2000);
 }
-void reproducir_sonido(int tecla)
+int escoger_nota_alta(int tecla)
 {
-	
-	char comando[] = "start wmplayer \"%cd%\\00.wav\"";
-	if (tecla >= LA)
-	{
-		comando[21] = 49;
 		switch (tecla)
 		{
 		case LA:
-			comando[22] = 48;
-			lanzar_comando(comando); 
+			tecla = 48;
+			return(tecla);
 			break;
 		case LAS:
-			comando[22] = 49;
-			lanzar_comando(comando);
+			tecla = 49;
+			return(tecla);
 			break;
 		case SI:
-			comando[22] = 50;
-			lanzar_comando(comando);
+			tecla = 50;
+			return(tecla);
 			break;
 		default:
 			break;
-		}
-	}
-	else if(tecla != 0)
-	{
-		comando[22] = ("%d", tecla);
-		lanzar_comando(comando);
 	}
 }
+void reproducir_sonido(int tecla, int instrumento)
+{
+  char comando[] = "start wmplayer \"%cd%\\00.wav\"";
+  switch (instrumento)
+  {
+  case Piano:
+    if (tecla >= LA)
+    {
+      comando[21] = 49;
+      comando[22] = escoger_nota_alta(tecla);
+      lanzar_comando(comando);
+    }
+    else if (tecla != 0)
+    {
+      comando[22]= ("%d", tecla);
+      lanzar_comando(comando);
+    }
+    break;
+  case Ukelele:
+    comando[21] = 50;
+    if (tecla >= LA)
+    {
+      comando[21] = 51;
+      comando[22] = escoger_nota_alta(tecla);
+      lanzar_comando(comando);
+    }
+    else if (tecla != 0)
+    {
+      comando[22] = ("%d", tecla);
+      lanzar_comando(comando);
+    }
+    break;
+  case Ocarina:
+    comando[21] = 52;
+    if (tecla >= LA)
+    {
+      comando[21] = 53;
+      comando[22] = escoger_nota_alta(tecla);
+      lanzar_comando(comando);
+    }
+    else if (tecla != 0)
+    {
+      comando[22] = ("%d", tecla);
+      lanzar_comando(comando);
+    }
+    break;
+  case Sintetizador:
+    comando[21] = 54;
+    if (tecla >= LA)
+    {
+      comando[21] = 55;
+      comando[22] = escoger_nota_alta(tecla);
+      lanzar_comando(comando);
+    }
+    else if (tecla != 0)
+    {
+      comando[22] = ("%d", tecla);
+      lanzar_comando(comando);
+    }
+    break;
+  }
+}
 
-void reproducir(PSONIDO cabesa)
+void reproducir(PSONIDO cabesa, int instrumento)
 {
 	//PSONIDO * aux = NULL;
 	PSONIDO aux = NULL;
@@ -221,7 +272,7 @@ void reproducir(PSONIDO cabesa)
 	while (leer_cadena(aux) != NULL)  // DEBUENVE DE NUEVO LA CADENA DESDE EL PRINCIPIO
 	{
 		int tecla = leer_cadena(aux);
-		reproducir_sonido(tecla);
+		reproducir_sonido(tecla, instrumento);
 		aux = aux->pSig;
 	}
 	/*while (leer_cadena(aux) != NULL)
@@ -232,17 +283,17 @@ void reproducir(PSONIDO cabesa)
 	liberar(cabesa);
 
 }
-void tocar()
+void tocar(int instrumento)
 {
 	int tecla = 0;
 	do
 	{
 		tecla = escanear_tecla();
 		int nuestra_tecla = comparar_tecla(tecla);
-		reproducir_sonido(nuestra_tecla);
+		reproducir_sonido(nuestra_tecla, instrumento);
 	} while (tecla != 27);
 }
-PSONIDO grabar(PSONIDO cabesa)
+PSONIDO grabar(PSONIDO cabesa, int instrumento)
 {
 	int nuestra_tecla = 1;
 	int tecla = 0;
@@ -250,7 +301,7 @@ PSONIDO grabar(PSONIDO cabesa)
 	{
 		tecla = escanear_tecla();
 		nuestra_tecla = comparar_tecla(tecla);
-		reproducir_sonido(nuestra_tecla);
+		reproducir_sonido(nuestra_tecla, instrumento);
 		cabesa = guardar_notas(cabesa, nuestra_tecla);
 		guardar_archivo(cabesa);
 

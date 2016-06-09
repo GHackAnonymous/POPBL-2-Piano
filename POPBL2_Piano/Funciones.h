@@ -6,7 +6,7 @@
 *  driver and eventually any macros, constants,
 *  or global variables you will need.
 *
-*  @author Eder Gómez de Segura (eder.gomezp@alumni.mondragon.edu)
+*  @author Eder Gï¿½mez de Segura (eder.gomezp@alumni.mondragon.edu)
 *  @author
 *  @author
 *  @author
@@ -50,6 +50,10 @@
 #define h 104
 #define u 117
 #define j 106
+#define Piano 1
+#define Ukelele 2
+#define Ocarina 3
+#define Sintetizador 4
 
 
 /** @brief explicacion corta
@@ -71,15 +75,15 @@ int comparar_tecla(int tecla); //ok
 PSONIDO crear_cadena(PSONIDO cabesa, int tecla); // OK
 int escanear_tecla(); //ok
 int leer_cadena(PSONIDO aux); //ok
-void reproducir(PSONIDO cabesa); // ok
-void reproducir_sonido(int tecla); //ok
+void reproducir(PSONIDO cabesa, int instrumento); // ok
+void reproducir_sonido(int tecla ,int instrumento); //ok
 PSONIDO saltar_cadena(PSONIDO aux); // ok
 PSONIDO cargar_sonido(PSONIDO cabesa); // ok
 void guardar_archivo(PSONIDO cabesa); //ok
 void escribir_nota(FILE* fp, PSONIDO cabesa); //ok
 PSONIDO guardar_notas(PSONIDO cabesa, int nota); //ok
-void tocar();
-PSONIDO grabar(PSONIDO cabesa);
+void tocar(int instrumento);
+PSONIDO grabar(PSONIDO cabesa ,int instrumento);
 int cargar_de_archivo(FILE* fp, int tecla);
 void lanzar_comando(char comando[]);
 void liberar(PSONIDO cabesa);
