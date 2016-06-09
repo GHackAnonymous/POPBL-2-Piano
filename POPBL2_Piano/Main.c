@@ -36,10 +36,10 @@ int main()
 	pinMode(5, INPUT); //5 es el correspondiente del chip al pin 18
 	pinMode(6, INPUT); //6 es el correspondiente del chip al pin 22
 	pinMode(7, INPUT); //7 es el correspondiente del chip al pin 29
-	pinMode(8, INPUT); //8 es el correspondiente del chip al pin 31
-	pinMode(9, INPUT); //9 es el correspondiente del chip al pin 32
-	pinMode(10, INPUT); //10 es el correspondiente del chip al pin 33
-	pinMode(11, INPUT); //11 es el correspondiente del chip al pin 35
+	pinMode(10, INPUT); //8 es el correspondiente del chip al pin 31
+	pinMode(11, INPUT); //9 es el correspondiente del chip al pin 32
+	pinMode(12, INPUT); //10 es el correspondiente del chip al pin 33
+	pinMode(13, INPUT); //11 es el correspondiente del chip al pin 35
 
 
 

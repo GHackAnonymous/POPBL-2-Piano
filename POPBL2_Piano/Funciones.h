@@ -74,10 +74,10 @@
 #define f 5
 #define t 6
 #define g 7
-#define y 8
-#define h 9
-#define u 10
-#define j 11
+#define y 10
+#define h 11
+#define u 12
+#define j 13
 
 
 /** @brief explicacion corta

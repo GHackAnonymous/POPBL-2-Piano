@@ -143,11 +143,11 @@ int leer_cadena(PSONIDO aux)
 
 	return tecla;
 }
-int escanear_tecla()
-{
-        int tecla = getch();
-        return tecla;
-}
+//int escanear_tecla()
+//{
+//        int tecla = getch();
+//        return tecla;
+//}
 int comparar_tecla(int tecla)
 {
 	switch (tecla)
@@ -197,15 +197,22 @@ int detectar_gpio()
 {
 	int boton = -1;
 	int i = 0;
-	for (i = 0; i <= 11; i++)
+	for (i = 0; i <= 13; i++)
 	{
 		int impulso = digitalRead(i);
-		if(impulso == 1)
+		printf("\n%d\n", impulso);
+		if (impulso == 1)
 		{
 			boton = i;
+			printf("\n%d\n", boton);
 			break;
 		}
+		if (i == 7)
+		{
+			i = 9;
+		}
 	}
+
 	return boton;
 }
 void lanzar_comando(char comando[])
