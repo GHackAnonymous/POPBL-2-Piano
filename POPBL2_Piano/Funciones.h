@@ -78,7 +78,10 @@
 #define h 11
 #define u 12
 #define j 13
-
+#define Piano 1
+#define Ukelele 2
+#define Ocarina 3
+#define Sintetizador 4
 
 /** @brief explicacion corta
 *
@@ -94,25 +97,25 @@ typedef struct Melodia
 	struct Melodia *pSig;
 } SONIDO, *PSONIDO;
 
+int elegir_instrumento();
 char getch(); //ok
 FILE* abrir_archivo(int funcion); // ok
 int comparar_tecla(int tecla); //ok
 PSONIDO crear_cadena(PSONIDO cabesa, int tecla); // OK
 /*int escanear_tecla();*/ //ok
 int leer_cadena(PSONIDO aux); //ok
-void reproducir(PSONIDO cabesa); // ok
-void reproducir_sonido(int tecla); //ok
+void reproducir(PSONIDO cabesa, int instrumento); // ok
+void reproducir_sonido(int tecla, int instrumento); //ok
 PSONIDO saltar_cadena(PSONIDO aux); // ok
 PSONIDO cargar_sonido(PSONIDO cabesa); // ok
 void guardar_archivo(PSONIDO cabesa); //ok
 void escribir_nota(FILE* fp, PSONIDO cabesa); //ok
 PSONIDO guardar_notas(PSONIDO cabesa, int nota); //ok
 void tocar();
-PSONIDO grabar(PSONIDO cabesa);
+PSONIDO grabar(PSONIDO cabesa, int instrumento);
 int cargar_de_archivo(FILE* fp, int tecla);
 void lanzar_comando(char comando[]);
 void liberar(PSONIDO cabesa);
 int detectar_gpio();
-
 
 #endif

@@ -12,16 +12,8 @@
 #include <wiringPi.h>
 
 int main()
-{       
-	//char str[128];
+{
 	PSONIDO cabesa = NULL;
-
-	//int opcion = 0;
-
-	//printf("In: 1-Repoducir 2-Tocar 3-grabar:\n");
-	//printf("->");
-	//fgets(str, 128, stdin);
-	//sscanf(str, "%d", &opcion);
 
 	if (wiringPiSetup() == -1)
 	{
@@ -46,21 +38,51 @@ int main()
 	pinMode(27, OUTPUT); // cool runner p8 j1
 	pinMode(26, INPUT); // cool runner p3 j1
 	pinMode(25, INPUT); // cool runner p4 j1
-	// tenemos que traer la señal de la raspberry pi
 
-	switch (opcion)
-	{
-	case 1:
-		reproducir(cabesa);
-		break;
-	case 2:
-		tocar();
-		break;
-	case 3:
-		grabar(cabesa);
-		break;
-	}
 
+	// tenemos que traer la senal de la raspberry pi
+
+	int control = 0, instrumento = 0;
+	
+	do {
+		//sleep(8);
+		
+		int opcion1 = digitalRead(26);
+		int opcion2 = digitalRead(25);
+
+		if (opcion1 == 0 && opcion2 == 0)
+		{
+			digitalWrite(29, 0);
+			digitalWrite(27, 0);
+			instrumento = elegir_instrumento();
+			reproducir(cabesa, instrumento);
+		}
+		else if(opcion1 == 0 && opcion2 == 1)
+		{
+			digitalWrite(29, 0);
+            digitalWrite(27, 1);
+			instrumento = elegir_instrumento();
+			tocar(instrumento);
+		}
+		else if (opcion1 == 1 && opcion2 == 0)
+		{
+			digitalWrite(29, 1);
+            digitalWrite(27, 0);
+			instrumento = elegir_instrumento();
+			grabar(cabesa, instrumento);
+		}
+		else if (opcion1 == 1 && opcion2 == 1)
+		{
+			digitalWrite(29, 1);
+            digitalWrite(27, 1);
+			// no hace nada pero tenemos que enviar la senal
+			//a la cool runner
+		}
+		
+		control = digitalRead(0);
+		printf("%d",control);
+
+	} while (control != 1);
 
 	return 0;
 }
