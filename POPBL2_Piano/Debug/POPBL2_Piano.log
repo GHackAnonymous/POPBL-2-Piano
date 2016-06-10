@@ -1,8 +1,5 @@
-﻿  Main.c
-  Funciones.c
+﻿  Funciones.c
 c:\users\ghackanonymous\documents\visual studio 2015\projects\popbl2_piano\popbl2_piano\funciones.c(80): warning C4047: '!=': 'int' es distinto en los niveles de direccionamiento indirecto de 'void *'
 c:\users\ghackanonymous\documents\visual studio 2015\projects\popbl2_piano\popbl2_piano\funciones.c(272): warning C4047: '!=': 'int' es distinto en los niveles de direccionamiento indirecto de 'void *'
-  Generando código...
 c:\users\ghackanonymous\documents\visual studio 2015\projects\popbl2_piano\popbl2_piano\funciones.c(198): warning C4715: 'escoger_nota_alta': no todas las rutas de acceso de control devuelven un valor
-  LINK : no se encontró C:\Users\GHackAnonymous\documents\visual studio 2015\Projects\POPBL2_Piano\Debug\POPBL2_Piano.exe o no lo generó el último vínculo incremental; ejecutando vínculo completo
   POPBL2_Piano.vcxproj -> C:\Users\GHackAnonymous\documents\visual studio 2015\Projects\POPBL2_Piano\Debug\POPBL2_Piano.exe
