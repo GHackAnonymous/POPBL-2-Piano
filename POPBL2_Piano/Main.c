@@ -38,6 +38,7 @@ int main()
 	pinMode(27, OUTPUT); // cool runner p8 j1
 	pinMode(26, INPUT); // cool runner p3 j1
 	pinMode(25, INPUT); // cool runner p4 j1
+	pinMode(21, INPUT); // Boton Salir
 
 
 	// tenemos que traer la senal de la raspberry pi
@@ -79,8 +80,10 @@ int main()
 			//a la cool runner
 		}
 		
-		control = digitalRead(0);
+		control = digitalRead(21);
 		printf("%d",control);
+		
+		//sleep(5);
 
 	} while (control != 1);
 

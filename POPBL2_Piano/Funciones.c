@@ -352,8 +352,8 @@ void reproducir(PSONIDO cabesa, int instrumento)
 		aux = aux->pSig;
 	}
         liberar(cabesa);
-		control = digitalRead(25);
-	} while (control != 0);
+		control = digitalRead(21);
+	} while (control != 1);
 }
 void tocar( int instrumento)
 {
@@ -365,8 +365,8 @@ void tocar( int instrumento)
 		int nuestra_tecla = comparar_tecla(tecla);
 		reproducir_sonido(nuestra_tecla, instrumento);
 		
-		control = digitalRead(25);
-	} while (control != 0);
+		control = digitalRead(21);
+	} while (control != 1);
 }
 PSONIDO grabar(PSONIDO cabesa, int instrumento)
 {
@@ -384,9 +384,9 @@ PSONIDO grabar(PSONIDO cabesa, int instrumento)
 			guardar_archivo(cabesa);
 
 		}
-        liberar(cabesa);
-		control = digitalRead(25);
-	}while(control != 0);
+		control = digitalRead(21);
+	}while(control != 1);
+	liberar(cabesa);
 	return cabesa;
 }
 void liberar(PSONIDO cabesa)
