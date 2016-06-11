@@ -327,11 +327,11 @@ int elegir_instrumento()
 		} 
 		else if (opcion1 == 0 && opcion2 == 1)
 		{
-				instrumento = Ocarina;
+			instrumento = Ocarina;
 		} 
 		else if (opcion1 == 1 && opcion2 == 1)
 		{
-				instrumento = Sintetizador;
+			instrumento = Sintetizador;
 		}
 		
 		return instrumento;

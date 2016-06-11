@@ -50,6 +50,7 @@ int main()
 		
 		int opcion1 = digitalRead(26);
 		int opcion2 = digitalRead(25);
+		control = 0;
 
 		if (opcion1 == 0 && opcion2 == 0)
 		{
@@ -80,10 +81,15 @@ int main()
 			//a la cool runner
 		}
 		
-		control = digitalRead(21);
-		printf("%d",control);
+		printf("\nESPERO\n");
+		sleep(4);
 		
-		//sleep(5);
+		control = digitalRead(21);
+		printf("%d\n",control);
+		
+		//printf("\nESPERO\n");
+		//sleep(4);
+		printf("%d\n",control);
 
 	} while (control != 1);
 
