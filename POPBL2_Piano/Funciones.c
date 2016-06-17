@@ -1,39 +1,63 @@
 #define _CRT_SECURE_NO_WARNINGS
 
-#include "Funciones.h"
-//#include <windows.h>
-//#include <conio.h>
+
 #include <stdio.h>
 #include <stdlib.h>
-//#include <dos.h>
 #include <string.h>
 #include <unistd.h>   //_getch*/
 #include <termios.h>  //_getch*/
 #include <wiringPi.h>
 
-char getch(){
-    /*#include <unistd.h>   //_getch*/
-    /*#include <termios.h>  //_getch*/
-    char buf=0;
-    struct termios old={0};
-    fflush(stdout);
-    if(tcgetattr(0, &old)<0)
-        perror("tcsetattr()");
-    old.c_lflag&=~ICANON;
-    old.c_lflag&=~ECHO;
-    old.c_cc[VMIN]=1;
-    old.c_cc[VTIME]=0;
-    if(tcsetattr(0, TCSANOW, &old)<0)
-        perror("tcsetattr ICANON");
-    if(read(0,&buf,1)<0)
-        perror("read()");
-    old.c_lflag|=ICANON;
-    old.c_lflag|=ECHO;
-    if(tcsetattr(0, TCSADRAIN, &old)<0)
-        perror ("tcsetattr ~ICANON");
-    //printf("%c\n",buf);
-    return buf;
- }
+#include "Funciones.h"
+
+char getch() {
+	char buf = 0;
+	struct termios old = { 0 };
+	fflush(stdout);
+	if (tcgetattr(0, &old)<0)
+		perror("tcsetattr()");
+	old.c_lflag &= ~ICANON;
+	old.c_lflag &= ~ECHO;
+	old.c_cc[VMIN] = 1;
+	old.c_cc[VTIME] = 0;
+	if (tcsetattr(0, TCSANOW, &old)<0)
+		perror("tcsetattr ICANON");
+	if (read(0, &buf, 1)<0)
+		perror("read()");
+	old.c_lflag |= ICANON;
+	old.c_lflag |= ECHO;
+	if (tcsetattr(0, TCSADRAIN, &old)<0)
+		perror("tcsetattr ~ICANON");
+	return buf;
+}
+
+int init_gpio()
+{
+	if (wiringPiSetup() == -1)
+	{
+		return 1;
+	}
+
+	pinMode(0, INPUT); //0 es el correspondiente del chip al pin 11
+	pinMode(1, INPUT); //1 es el correspondiente del chip al pin 12
+	pinMode(2, INPUT); //2 es el correspondiente del chip al pin 13
+	pinMode(3, INPUT); //3 es el correspondiente del chip al pin 15
+	pinMode(4, INPUT); //4 es el correspondiente del chip al pin 16
+	pinMode(5, INPUT); //5 es el correspondiente del chip al pin 18
+	pinMode(6, INPUT); //6 es el correspondiente del chip al pin 22
+	pinMode(7, INPUT); //7 es el correspondiente del chip al pin 29
+	pinMode(10, INPUT); //8 es el correspondiente del chip al pin 31
+	pinMode(11, INPUT); //9 es el correspondiente del chip al pin 32
+	pinMode(12, INPUT); //10 es el correspondiente del chip al pin 33
+	pinMode(13, INPUT); //11 es el correspondiente del chip al pin 35
+	pinMode(14, INPUT); // Cool rumner  p1 j1
+	pinMode(22, INPUT); // cool runner p2 j1
+	pinMode(29, OUTPUT); // cool runner p7 j1
+	pinMode(27, OUTPUT); // cool runner p8 j1
+	pinMode(26, INPUT); // cool runner p3 j1
+	pinMode(25, INPUT); // cool runner p4 j1
+	pinMode(21, INPUT); // Boton Salir
+}
 
 PSONIDO crear_cadena(PSONIDO cabesa, int tecla)
 {
@@ -49,7 +73,6 @@ PSONIDO crear_cadena(PSONIDO cabesa, int tecla)
 		cabesa = nuevo;
 		cabesa->pSig = NULL;
 	}
-
 	else
 	{
 		aux = saltar_cadena(aux);
@@ -96,13 +119,14 @@ PSONIDO cargar_sonido(PSONIDO cabesa)
 {
 	FILE* fp;
 	int tecla;
-	int funcion = 1;
+	int funcion;
+	funcion = 1;
 
 	cabesa = NULL;
 	tecla = 0;
 	fp = abrir_archivo(funcion);
 
-	while ((tecla = cargar_de_archivo(fp, tecla)) != NULL)
+	while ((tecla = cargar_de_archivo(fp, tecla)) != 0)
 	{
 		cabesa = crear_cadena(cabesa, tecla);
 		tecla = 0;
@@ -113,7 +137,8 @@ PSONIDO cargar_sonido(PSONIDO cabesa)
 void guardar_archivo(PSONIDO cabesa)
 {
 	FILE *fp;
-	int funcion = 2;
+	int funcion;
+	funcion = 2;
 	fp = abrir_archivo(funcion);
 	while (cabesa != NULL)
 	{
@@ -131,14 +156,16 @@ void escribir_nota(FILE* fp, PSONIDO cabesa)
 PSONIDO guardar_notas(PSONIDO cabesa, int nota)
 {
 	cabesa = crear_cadena(cabesa, nota);
+	printf("%d", cabesa);
 	return cabesa;
 }
 int leer_cadena(PSONIDO aux)
 {
-	int tecla = 0; 
+	int tecla;
+	tecla = 0;
 	if (aux != NULL)
 	{
-		tecla = (aux)->tecla; 
+		tecla = (aux)->tecla;
 	}
 
 	return tecla;
@@ -146,55 +173,42 @@ int leer_cadena(PSONIDO aux)
 
 int comparar_tecla(int tecla)
 {
-	printf("\n%d\n",tecla);
 	switch (tecla)
 	{
 	case a:
-		printf("%d\n", a);
 		return DO;
 		break;
 	case w:
-		printf("%d\n", w);
 		return DOS;
 		break;
 	case s:
-		printf("%d\n", s);
 		return RE;
 		break;
 	case e:
-		printf("%d\n", e);
 		return RES;
 		break;
 	case d:
-		printf("%d\n", d);
 		return MI;
 		break;
 	case f:
-		printf("%d\n", f);
 		return FA;
 		break;
 	case t:
-		printf("%d\n", t);
 		return MIS;
 		break;
 	case g:
-		printf("%d\n", g);
 		return SOL;
 		break;
 	case y:
-		printf("%d\n", y);
 		return SOLS;
 		break;
 	case h:
-		printf("%d\n", h);
 		return LA;
 		break;
 	case u:
-		printf("%d\n", u);
 		return LAS;
 		break;
 	case j:
-		printf("%d\n", j);
 		return SI;
 		break;
 	default:
@@ -204,19 +218,21 @@ int comparar_tecla(int tecla)
 }
 int detectar_gpio()
 {
-	int boton = -1;
-	int i = 0;
-	for (i = 0; i <=13; i++)
+	int boton;
+	int i;
+
+	boton = -1;
+	i = 0;
+
+	for (i = 0; i <= 13; i++)
 	{
 		int impulso = digitalRead(i);
-		printf("\n%d\n",impulso);
-		if(impulso == 1)
+		if (impulso == 1)
 		{
 			boton = i;
-			printf("\n%d\n",boton);
 			break;
 		}
-		if( i == 7)
+		if (i == 7)
 		{
 			i = 9;
 		}
@@ -226,176 +242,196 @@ int detectar_gpio()
 }
 void lanzar_comando(char comando[])
 {
-	printf(comando);
 	system(comando);
 	sleep(0.5);
 }
 int escoger_nota_alta(int tecla)
 {
-  switch (tecla)
-  {
-  case LA:
-    tecla = 48;
-    return(tecla);
-  case LAS:
-    tecla = 49;
-    return(tecla);
-    break;
-  case SI:
-    tecla = 50;
-    return(tecla);
-    break;
-  default:
-    break;
-  }
+	switch (tecla)
+	{
+	case LA:
+		tecla = 48;
+		return(tecla);
+	case LAS:
+		tecla = 49;
+		return(tecla);
+		break;
+	case SI:
+		tecla = 50;
+		return(tecla);
+		break;
+	default:
+		break;
+	}
 }
 void reproducir_sonido(int tecla, int instrumento)
 {
-  char comando[] = "aplay ./00.wav";
-  switch (instrumento)
-  {
-  case Piano:
-    if (tecla >= LA)
-    {
-      comando[8] = 49;
-      comando[9] = escoger_nota_alta(tecla);
-      lanzar_comando(comando);
-    }
-    else if (tecla != 0)
-    {
-      comando[9]= ("%d", tecla);
-      lanzar_comando(comando);
-    }
-    break;
-  case Ukelele:
-    comando[8] = 50;
-    if (tecla >= LA)
-    {
-      comando[8] = 51;
-      comando[9] = escoger_nota_alta(tecla);
-      lanzar_comando(comando);
-    }
-    else if (tecla != 0)
-    {
-      comando[9] = ("%d", tecla);
-      lanzar_comando(comando);
-    }
-    break;
-  case Ocarina:
-    comando[8] = 52;
-    if (tecla >= LA)
-    {
-      comando[8] = 53;
-      comando[9] = escoger_nota_alta(tecla);
-      lanzar_comando(comando);
-    }
-    else if (tecla != 0)
-    {
-      comando[9] = ("%d", tecla);
-      lanzar_comando(comando);
-    }
-    break;
-  case Sintetizador:
-    comando[8] = 54;
-    if (tecla >= LA)
-    {
-      comando[8] = 55;
-      comando[9] = escoger_nota_alta(tecla);
-      lanzar_comando(comando);
-    }
-    else if (tecla != 0)
-    {
-      comando[9] = ("%d", tecla);
-      lanzar_comando(comando);
-    }
-    break;
-  }
+	char comando[] = "aplay ./00.wav";
+	switch (instrumento)
+	{
+	case Piano:
+		if (tecla >= LA)
+		{
+			comando[8] = 49;
+			comando[9] = escoger_nota_alta(tecla);
+			lanzar_comando(comando);
+		}
+		else if (tecla != 0)
+		{
+			comando[9] = ("%d", tecla);
+			lanzar_comando(comando);
+		}
+		break;
+	case Ukelele:
+		comando[8] = 50;
+		if (tecla >= LA)
+		{
+			comando[8] = 51;
+			comando[9] = escoger_nota_alta(tecla);
+			lanzar_comando(comando);
+		}
+		else if (tecla != 0)
+		{
+			comando[9] = ("%d", tecla);
+			lanzar_comando(comando);
+		}
+		break;
+	case Ocarina:
+		comando[8] = 52;
+		if (tecla >= LA)
+		{
+			comando[8] = 53;
+			comando[9] = escoger_nota_alta(tecla);
+			lanzar_comando(comando);
+		}
+		else if (tecla != 0)
+		{
+			comando[9] = ("%d", tecla);
+			lanzar_comando(comando);
+		}
+		break;
+	case Sintetizador:
+		comando[8] = 54;
+		if (tecla >= LA)
+		{
+			comando[8] = 55;
+			comando[9] = escoger_nota_alta(tecla);
+			lanzar_comando(comando);
+		}
+		else if (tecla != 0)
+		{
+			comando[9] = ("%d", tecla);
+			lanzar_comando(comando);
+		}
+		break;
+	}
 }
 int elegir_instrumento()
 {
-	int instrumento = 0;
-	int opcion1 = digitalRead(14);
-	int opcion2 = digitalRead(22);
+	int instrumento;
+	int opcion1;
+	int opcion2;
 
-		if (opcion1 == 0 && opcion2 == 0)
-		{
-			    instrumento = Piano;
-		}
-		else if (opcion1 == 1 && opcion2 == 0)
-		{
-			instrumento = Ukelele;
-		} 
-		else if (opcion1 == 0 && opcion2 == 1)
-		{
-			instrumento = Ocarina;
-		} 
-		else if (opcion1 == 1 && opcion2 == 1)
-		{
-			instrumento = Sintetizador;
-		}
-		
-		return instrumento;
+	instrumento = 0;
+	opcion1 = digitalRead(14);
+	opcion2 = digitalRead(22);
+
+	if (opcion1 == 0 && opcion2 == 0)
+	{
+		instrumento = Piano;
+	}
+	else if (opcion1 == 1 && opcion2 == 0)
+	{
+		instrumento = Ukelele;
+	}
+	else if (opcion1 == 0 && opcion2 == 1)
+	{
+		instrumento = Ocarina;
+	}
+	else if (opcion1 == 1 && opcion2 == 1)
+	{
+		instrumento = Sintetizador;
+	}
+
+	return instrumento;
 }
 void reproducir(PSONIDO cabesa, int instrumento)
 {
-	PSONIDO aux = NULL;
-	int control = 1;
+	PSONIDO aux;
+	int control;
+
+	aux = NULL;
+	control = 1;
+
 	cabesa = cargar_sonido(cabesa);
 
-	aux = cabesa; 
-	 do{
+	aux = cabesa;
 
-	while (leer_cadena(aux) != NULL)  
-	{
-		int tecla = leer_cadena(aux);
-		reproducir_sonido(tecla, instrumento);
-		aux = aux->pSig;
-	}
-        liberar(cabesa);
+	do {
+
+		while (leer_cadena(aux) != 0)
+		{
+			int tecla = leer_cadena(aux);
+			reproducir_sonido(tecla, instrumento);
+			aux = aux->pSig;
+		}
+
 		control = digitalRead(21);
 	} while (control != 1);
+	liberar(cabesa);
 }
-void tocar( int instrumento)
+void tocar(int instrumento)
 {
-	int tecla = 0, control = 1;
+	int tecla;
+	int control;
+
+	tecla = 0;
+	control = 1;
+
 	do
 	{
-		//tecla = escanear_tecla();
 		tecla = detectar_gpio();
 		int nuestra_tecla = comparar_tecla(tecla);
 		reproducir_sonido(nuestra_tecla, instrumento);
-		
+
 		control = digitalRead(21);
 	} while (control != 1);
 }
 PSONIDO grabar(PSONIDO cabesa, int instrumento)
 {
-	int nuestra_tecla = 1;
-	int tecla = 0;
-	int control = 1;
-	do{
-		while (nuestra_tecla != 0)
-		{
-			//tecla = escanear_tecla(); //ok
-			tecla = detectar_gpio();
-			nuestra_tecla = comparar_tecla(tecla); //ok
-			reproducir_sonido(nuestra_tecla, instrumento); //ok
-			cabesa = guardar_notas(cabesa, nuestra_tecla);
-			guardar_archivo(cabesa);
+	int nuestra_tecla;
+	int tecla;
+	int control;
 
-		}
+	nuestra_tecla = 1;
+	tecla = -2;
+	control = 1;
+	do {
+		do
+		{
+
+			tecla = detectar_gpio();
+			nuestra_tecla = comparar_tecla(tecla);
+			reproducir_sonido(nuestra_tecla, instrumento);
+			if (nuestra_tecla != 0)
+			{
+				cabesa = guardar_notas(cabesa, nuestra_tecla);
+				guardar_archivo(cabesa);
+			}
+
+		} while (nuestra_tecla != 0);
 		control = digitalRead(21);
-	}while(control != 1);
+	} while (control != 1);
 	liberar(cabesa);
 	return cabesa;
 }
 void liberar(PSONIDO cabesa)
 {
-    PSONIDO aux;
-    while(cabesa->pSig != NULL)
-    {
-        aux = cabesa;
-        cabesa = cabesa->pSig;
-        free(aux);
-    }
+	PSONIDO aux;
+	while (cabesa->pSig != NULL)
+	{
+		aux = cabesa;
+		cabesa = cabesa->pSig;
+		free(aux);
+	}
 }
