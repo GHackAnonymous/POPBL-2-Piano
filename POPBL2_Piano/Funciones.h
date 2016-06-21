@@ -1,30 +1,29 @@
 /**
-*  @file Funciones.h
-*  @brief Function prototypes for the console driver.
+* @file Funciones.h
 *
-*  This contains the prototypes for the console
-*  driver and eventually any macros, constants,
-*  or global variables you will need.
+* @brief Aqui estan definidas las teclas, notas e intrumentos mediante defines.
+*		 Estan incluido la estructura Melodia llamada SONIDO.
 *
-*  @author Eder G�mez de Segura (eder.gomezp@alumni.mondragon.edu)
-*  @author
-*  @author
-*  @author
-*  @author
-*  @author
+* @author Irene Delgado (irene.delgado@alumni.mondragon.edu)
+* @author Lucas Sousa (lucas.sousa@alumni.mondragon.edu)
+* @author Xabier Gandiaga (xabier.gandiaga@alumni.mondragon.edu)
+* @author Eder Gomez de Segura (eder.gomezp@alumni.mondragon.edu)
+* @author Nikolay Zabaleta (nikolay.zabaleta@alumni.mondragon.edu)
+* @author Inigo Ayestaran (inigo.ayestaran@alumni.mondragon.edu)
+*
+* @date 2016-06-10
 */
-
-
 
 #ifndef Funciones
 #define Funciones
 
-#include "Funciones.h"
 #include<windows.h>
 #include<conio.h>
 #include<stdio.h>
 #include<stdlib.h>
 #include<dos.h>
+
+#include "Funciones.h"
 
 #define DO 49
 #define DOS 50
@@ -55,37 +54,27 @@
 #define Ocarina 3
 #define Sintetizador 4
 
-
-/** @brief explicacion corta
-*
-*  Comentario de que hacer
-*
-*  @param ch
-*  @return
-*/
-
 typedef struct Melodia
 {
 	int tecla;
 	struct Melodia *pSig;
 } SONIDO, *PSONIDO;
 
-FILE* abrir_archivo(int funcion); // ok
-int comparar_tecla(int tecla); //ok
-PSONIDO crear_cadena(PSONIDO cabesa, int tecla); // OK
-int escanear_tecla(); //ok
-int leer_cadena(PSONIDO aux); //ok
-void reproducir(PSONIDO cabesa, int instrumento); // ok
-void reproducir_sonido(int tecla ,int instrumento); //ok
-PSONIDO saltar_cadena(PSONIDO aux); // ok
-PSONIDO cargar_sonido(PSONIDO cabesa); // ok
-void guardar_archivo(PSONIDO cabesa); //ok
-void escribir_nota(FILE* fp, PSONIDO cabesa); //ok
-PSONIDO guardar_notas(PSONIDO cabesa, int nota); //ok
+FILE* abrir_archivo(int funcion);
+int comparar_tecla(int tecla);
+PSONIDO crear_cadena(PSONIDO cabesa, int tecla);
+int escanear_tecla();
+int leer_cadena(PSONIDO aux);
+void reproducir(PSONIDO cabesa, int instrumento);
+void reproducir_sonido(int tecla, int instrumento);
+PSONIDO saltar_cadena(PSONIDO aux);
+PSONIDO cargar_sonido(PSONIDO cabesa);
+void guardar_archivo(PSONIDO cabesa);
+void escribir_nota(FILE* fp, PSONIDO cabesa);
+PSONIDO guardar_notas(PSONIDO cabesa, int nota);
 void tocar(int instrumento);
-PSONIDO grabar(PSONIDO cabesa ,int instrumento);
+void grabar(PSONIDO cabesa, int instrumento);
 int cargar_de_archivo(FILE* fp, int tecla);
 void lanzar_comando(char comando[]);
-void liberar(PSONIDO cabesa);
 
 #endif

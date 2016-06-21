@@ -1,6 +1,29 @@
+/** @file Funciones.c
+* @brief Funciones del piano
+*
+* En esta libreria estan todas las funciones del funcionamiento
+* de programa.
+*
+* @author Irene Delgado (irene.delgado@alumni.mondragon.edu)
+* @author Lucas Sousa (lucas.sousa@alumni.mondragon.edu)
+* @author Xabier Gandiaga (xabier.gandiaga@alumni.mondragon.edu)
+* @author Eder Gomez de Segura (eder.gomezp@alumni.mondragon.edu)
+* @author Nikolay Zabaleta (nikolay.zabaleta@alumni.mondragon.edu)
+* @author Inigo Ayestaran (inigo.ayestaran@alumni.mondragon.edu)
+*
+* @date 2016-06-10
+*
+* @todo Inplementar una funcion para poder tcar dos teclas a mismo tiempo.
+* @todo Inplementar una funcion para guardar los silencios a la hora de grabar.
+* @todo Inplementar una funcion para para guardar mas de una grabacion.
+*
+* @bug A las tres pricipales funciones (Grabar, Tocar, Reproducir) les pasamos
+*		el parametro cabesa el cual es NULL y esta de sobra pero no altera del
+*		funcionamiento del programa.
+*/
 #define _CRT_SECURE_NO_WARNINGS
 
-#include "Funciones.h"
+
 #include <windows.h>
 #include <conio.h>
 #include <stdio.h>
@@ -8,33 +31,61 @@
 #include <dos.h>
 #include <string.h>
 
+#include "Funciones.h"
 
+/** @brief Se crea un nuevo PSONIDO que ira ultimo o
+*         primero, en base a que haya uno o no lo haya.
+*
+* @param Cabesa, es la primera direccion de las estructuras concatenadas.
+* @param tecla, la nota a guardar.
+*
+* @return cabesa, es la primera direccion de las estructuras concatenadas.
+*/
 PSONIDO crear_cadena(PSONIDO cabesa, int tecla)
 {
+	//Valores locales
 	PSONIDO nuevo;
 	PSONIDO aux;
 
 	aux = cabesa;
 
-	nuevo = malloc(sizeof(SONIDO));//crear_cadena
+	//nuevo recibe la direccion de la memoria dinamica. 
+	nuevo = malloc(sizeof(SONIDO));
+
+	//La variable tecla de la estructura nuevo recibe el valor de la variable local tecla.
 	nuevo->tecla = tecla;
+
+	/*	La algoritmia
+	*
+	*	Si cabesa es igual a NULL al ser el primer nodo se le asigna el primer valor,
+	*/
 	if (cabesa == NULL)
 	{
 		cabesa = nuevo;
 		cabesa->pSig = NULL;
 	}
-
 	else
 	{
+		/*
+		*	La funcion saltar_cadena nos lleva a la ultima estructura y manda su direccion
+		*	a aux.
+		*
+		*	La estructura nuevo se coloca en la ultima posicion de la cadena.
+		*/
 		aux = saltar_cadena(aux);
 		nuevo->pSig = NULL;
 		aux->pSig = nuevo;
 	}
-
 	return cabesa;
 }
 
-
+/**
+*	@brief Nos lleva al final de la cadena.
+*
+*	@param aux, contiene la direccion de cabesa.
+*
+*	@return aux, la ultima direccion de la cadena.
+*/
 PSONIDO saltar_cadena(PSONIDO aux)
 {
 	while (aux->pSig != NULL)
@@ -44,10 +95,18 @@ PSONIDO saltar_cadena(PSONIDO aux)
 	return aux;
 }
 
-
+/**
+*	@brief Se abre o guarda un archivo en base a funcion.
+*
+*	@param funcion, que designa si se leera o escribira en el archivo.
+*
+*	@return fp, el fichero que abrimos.
+*/
 FILE* abrir_archivo(int funcion)
 {
+	//Valores locales
 	FILE* fp;
+
 	if (funcion == 1)
 	{
 		fp = fopen("grabacion.dat", "rb");
@@ -56,77 +115,151 @@ FILE* abrir_archivo(int funcion)
 	{
 		fp = fopen("grabacion.dat", "wb");
 	}
-
 	return fp;
 }
 
+/**
+*	@brief Cargarmos el valor de tecla del fichero.
+*
+*	@param fp, el fichero que contiene la grabacion.
+*	@param tecla, la nota del archivo.
+*
+*	@return tecla, nota de la grabacion.
+*/
 int cargar_de_archivo(FILE* fp, int tecla)
 {
 	fread(&tecla, sizeof(SONIDO), 1, fp);
 	return tecla;
 }
 
+/**
+*	@brief Se carga la cadena de estructuras desde el fichero.
+*
+*	@param cabesa, paramentro que no influye en la funcion.
+*
+*	@return cabesa, la primera direccion de la cadena.
+*/
 PSONIDO cargar_sonido(PSONIDO cabesa)
 {
+	//Variables locales
 	FILE* fp;
 	int tecla;
-	int funcion = 1;
+	int funcion;
 
+	funcion = 1;
 	cabesa = NULL;
 	tecla = 0;
 	fp = abrir_archivo(funcion);
-	//tecla = cargar_de_archivo(fp, tecla);
-	//while (cargar_de_archivo(fp, tecla) != NULL)//necesita funcion;  //Fallo AQUI TECLA DESPUES OBTIONE 0
-	while ((tecla = cargar_de_archivo(fp, tecla)) != NULL)//necesita funcion;  //Fallo AQUI TECLA DESPUES OBTIONE 0
-	//while (tecla != NULL)//necesita funcion;  //Fallo AQUI TECLA DESPUES OBTIONE 0
+
+	//La funcion cargar_de_archivo carga la nota y la gurada en tecla.
+	while ((tecla = cargar_de_archivo(fp, tecla)) != NULL)
 	{
-		//tecla = cargar_de_archivo(fp, tecla);
-		//cabesa = crear_cadena(cabesa, tecla);
+		//Se crea la cadena
 		cabesa = crear_cadena(cabesa, tecla);
+
+		//Se otorga a tecla el valor de 0 para que no haya ningun problema
 		tecla = 0;
 	}
 	return cabesa;
 }
 
+/**
+*	@brief Se guarda la cadena de estructuras creadas en un fichero.
+*
+*	@param cabesa, la primira direccion de la cadena.
+*
+*	@return no retorna nada.
+*/
 void guardar_archivo(PSONIDO cabesa)
 {
+	//Variables locales
 	FILE *fp;
-	int funcion = 2;
+	int funcion;
+
+	funcion = 2;
+
 	fp = abrir_archivo(funcion);
+
 	while (cabesa != NULL)
 	{
 		escribir_nota(fp, cabesa);
 		cabesa = cabesa->pSig;
 	}
+
 	fclose(fp);
 }
 
+/**
+*	@brief Guarda la tecla de la estructura en el fichero
+*
+*	@param cabesa, la primera direcion de la cadena.
+*	@param fp, el fichero donde se guarda.
+*
+*	@return No retorna nada.
+*/
 void escribir_nota(FILE* fp, PSONIDO cabesa)
 {
 	fwrite(&cabesa->tecla, sizeof(SONIDO), 1, fp);
 }
 
+/**
+*	@brief Guardar las notas en la cadena de estructuras.
+*
+*	@param cabesa, la primera dicecion de la cadena.
+*	@param  nota, La nota perteneciente a la tecla que se nota.
+*
+*	@return cabesa, la primera direccion de la cadena.
+*/
 PSONIDO guardar_notas(PSONIDO cabesa, int nota)
 {
 	cabesa = crear_cadena(cabesa, nota);
+
 	return cabesa;
 }
-int leer_cadena(PSONIDO aux)//aux* está apuntando a cabesa desde el main (HAY QUE COMPROBAR, NO DIGO QUE NO SEA CIERTO)
+
+/**
+*	@brief Obtiene la tecla de la estructura.
+*
+*	@param aux, es una direccion de la cadena.
+*
+*	@return tecla, el valor obtenido del parametro tecla de la estructura.
+*/
+int leer_cadena(PSONIDO aux)
 {
-	int tecla = 0; 
+	int tecla;
+
+	tecla = 0;
+
 	if (aux != NULL)
-		tecla = (aux)->tecla; // SIEMPRE SE QUEDA EN LA PRIMERO NOTA
-	//(aux) = (aux)->pSig; // ESTO HAY QUE HACER EN EUNA FUNCION ANTES (UNA MAS ARRIBA EN LA ESCALERA DE FUNCIONES)
+	{
+		tecla = (aux)->tecla;
+	}
 
 	return tecla;
 }
+
+/**
+*	@brief Escanea la tecla que ha sido pulsada
+*
+*	@return tecla, el valor de la tecla pulsada
+*/
 int escanear_tecla()
 {
 	int tecla = _getch();
+
 	return tecla;
 }
+
+/**
+*	@brief Esta funcion compara la tecla escaneada y la devuelve como la nota correspondiente
+*
+*  @param tecla, la tecla que ha sido escaneada
+*
+*  @return Las distintas notas (DO, DOS, RE...)
+*/
 int comparar_tecla(int tecla)
 {
+	//Las teclas correspondes a las del piano
 	switch (tecla)
 	{
 	case a:
@@ -170,152 +303,219 @@ int comparar_tecla(int tecla)
 
 	}
 }
+
+/**
+*	@brief Se lanza el comando del comando que se le pasa.
+*
+*	@param comando, el char que contiene el comando y direccion
+*         de los archivos de sonido.
+*
+*	@return Void
+*/
 void lanzar_comando(char comando[])
 {
 	printf(comando);
 	system(comando);
 	Sleep(2000);
 }
+
+/**
+*	@brief Se usa para escoger las notas de LA a SI.
+*
+*	@param tecla, que contiene la nota.
+*
+*	@return tecla, con el valor escogido para la nota.
+*/
 int escoger_nota_alta(int tecla)
 {
-		switch (tecla)
-		{
-		case LA:
-			tecla = 48;
-			return(tecla);
-			break;
-		case LAS:
-			tecla = 49;
-			return(tecla);
-			break;
-		case SI:
-			tecla = 50;
-			return(tecla);
-			break;
-		default:
-			break;
+	switch (tecla)
+	{
+	case LA:
+		tecla = 48;
+		return(tecla);
+	case LAS:
+		tecla = 49;
+		return(tecla);
+		break;
+	case SI:
+		tecla = 50;
+		return(tecla);
+		break;
+	default:
+		break;
 	}
 }
+
+/**
+*	@brief se reproduce el fichero de audio de la nota correspondiente
+*
+*	@param tecla, el cual tiene la nota
+*	@param instrumento, sirve para escoger los ficheros de audio correspondientes.
+*
+*	@bug en vez de utilizar el sprintf utilizamos un char que lo altera el programa
+*		 pero no es una forma correcta de ponerlo.
+*
+*	@return void
+*/
 void reproducir_sonido(int tecla, int instrumento)
 {
-  char comando[] = "start wmplayer \"%cd%\\00.wav\"";
-  switch (instrumento)
-  {
-  case Piano:
-    if (tecla >= LA)
-    {
-      comando[21] = 49;
-      comando[22] = escoger_nota_alta(tecla);
-      lanzar_comando(comando);
-    }
-    else if (tecla != 0)
-    {
-      comando[22]= ("%d", tecla);
-      lanzar_comando(comando);
-    }
-    break;
-  case Ukelele:
-    comando[21] = 50;
-    if (tecla >= LA)
-    {
-      comando[21] = 51;
-      comando[22] = escoger_nota_alta(tecla);
-      lanzar_comando(comando);
-    }
-    else if (tecla != 0)
-    {
-      comando[22] = ("%d", tecla);
-      lanzar_comando(comando);
-    }
-    break;
-  case Ocarina:
-    comando[21] = 52;
-    if (tecla >= LA)
-    {
-      comando[21] = 53;
-      comando[22] = escoger_nota_alta(tecla);
-      lanzar_comando(comando);
-    }
-    else if (tecla != 0)
-    {
-      comando[22] = ("%d", tecla);
-      lanzar_comando(comando);
-    }
-    break;
-  case Sintetizador:
-    comando[21] = 54;
-    if (tecla >= LA)
-    {
-      comando[21] = 55;
-      comando[22] = escoger_nota_alta(tecla);
-      lanzar_comando(comando);
-    }
-    else if (tecla != 0)
-    {
-      comando[22] = ("%d", tecla);
-      lanzar_comando(comando);
-    }
-    break;
-  }
+	//Variable local
+	char comando[] = "start wmplayer \"%cd%\\00.wav\"";
+
+	//Se escoge el instrumento
+	switch (instrumento)
+	{
+	case Piano:
+		if (tecla >= LA)
+		{
+			comando[21] = 49;
+			comando[22] = escoger_nota_alta(tecla);
+			lanzar_comando(comando);
+		}
+		else if (tecla != 0)
+		{
+			comando[22] = ("%d", tecla);
+			lanzar_comando(comando);
+		}
+		break;
+	case Ukelele:
+		comando[21] = 50;
+		if (tecla >= LA)
+		{
+			comando[21] = 51;
+			comando[22] = escoger_nota_alta(tecla);
+			lanzar_comando(comando);
+		}
+		else if (tecla != 0)
+		{
+			comando[22] = ("%d", tecla);
+			lanzar_comando(comando);
+		}
+		break;
+	case Ocarina:
+		comando[21] = 52;
+		if (tecla >= LA)
+		{
+			comando[21] = 53;
+			comando[22] = escoger_nota_alta(tecla);
+			lanzar_comando(comando);
+		}
+		else if (tecla != 0)
+		{
+			comando[22] = ("%d", tecla);
+			lanzar_comando(comando);
+		}
+		break;
+	case Sintetizador:
+		comando[21] = 54;
+		if (tecla >= LA)
+		{
+			comando[21] = 55;
+			comando[22] = escoger_nota_alta(tecla);
+			lanzar_comando(comando);
+		}
+		else if (tecla != 0)
+		{
+			comando[22] = ("%d", tecla);
+			lanzar_comando(comando);
+		}
+		break;
+	}
 }
 
+/**
+*	@brief La funcion coge la anterior grabacion y la reproduce.
+*
+*	@param cabesa, en este caso es NULL.
+*	@param instrumento, sirve para escoger los ficheros de audio correspondientes.
+*
+*	@return Void
+*/
 void reproducir(PSONIDO cabesa, int instrumento)
 {
-	//PSONIDO * aux = NULL;
-	PSONIDO aux = NULL;
+	//Variables locales
+	PSONIDO aux;
 
+	aux = NULL;
+
+	//Carga la grabacion
 	cabesa = cargar_sonido(cabesa);
+	aux = cabesa;
 
-	//aux = &cabesa; // No se Copia
-	aux = cabesa; // No se Copia
-
-	while (leer_cadena(aux) != NULL)  // DEBUENVE DE NUEVO LA CADENA DESDE EL PRINCIPIO
+	//Mientras que tecla no sea NULL 
+	while (leer_cadena(aux) != NULL)
 	{
+		//Tecla obtiene el valor de aux
 		int tecla = leer_cadena(aux);
+		//Se reproduce
 		reproducir_sonido(tecla, instrumento);
+		//Salta a la sigiente estructura.
 		aux = aux->pSig;
+		//El bucle se completa cuando llega al final de la estructura.
 	}
-	/*while (leer_cadena(aux) != NULL)
-	{
-		int tecla = leer_cadena(aux);
-		reproducir_sonido(tecla);
-	}*/
-	liberar(cabesa);
 
 }
+
+/**
+*	@brief Reproduce sonido en base a la tecla tocada y el instrumento escogido.
+*
+*	@param instrumento, sirve para escoger los ficheros de audio correspondientes.
+*
+*	@return Void
+*/
 void tocar(int instrumento)
 {
-	int tecla = 0;
+	//Variables locales
+	int tecla;
+
+	//Se inicializan los valores
+	tecla = 0;
+
 	do
 	{
+		//Se escanea la tecla
 		tecla = escanear_tecla();
+		//Se devuelve tecla como nota
 		int nuestra_tecla = comparar_tecla(tecla);
+		//Reproduce un sonido en base a nuestra_tecla e instrumento
 		reproducir_sonido(nuestra_tecla, instrumento);
+		//Hasta que la tecla no sea esc
 	} while (tecla != 27);
+
 }
-PSONIDO grabar(PSONIDO cabesa, int instrumento)
+
+/**
+*	@brief Genera un fichero en base a las notas que
+*         sean recibidas a la hora de presionar teclas
+*
+*	@param cabesa, en este caso es NULL
+*	@param instrumento, sirve para escoger los ficheros de audio correspondientes.
+*
+*	@return Void
+*/
+void grabar(PSONIDO cabesa, int instrumento)
 {
-	int nuestra_tecla = 1;
-	int tecla = 0;
+	//Variables locales
+	int nuestra_tecla;
+	int tecla;
+
+	nuestra_tecla = 1;
+	tecla = 0;
+
+
+
 	while (nuestra_tecla != 0)
 	{
+		//Se escanea la tecla
 		tecla = escanear_tecla();
+		//Devuelve su valor como nota
 		nuestra_tecla = comparar_tecla(tecla);
+		//Reproduce el sonido en base a la nota y el instrumento
 		reproducir_sonido(nuestra_tecla, instrumento);
+		//Guarda las notas en PSONIDO cabesa
 		cabesa = guardar_notas(cabesa, nuestra_tecla);
-		guardar_archivo(cabesa);
+	}
 
-	}
-	liberar(cabesa);
-	return cabesa;
-}
-void liberar(PSONIDO cabesa)
-{
-	PSONIDO aux;
-	while (cabesa->pSig != NULL)
-	{
-		aux = cabesa;
-		cabesa = cabesa->pSig;
-		free(aux);
-	}
+	//Guarda cabesa en un fichero
+	guardar_archivo(cabesa);
 }
