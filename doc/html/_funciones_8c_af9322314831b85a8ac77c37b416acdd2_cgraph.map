@@ -1,0 +1,11 @@
+<map id="reproducir" name="reproducir">
+<area shape="rect" id="node2" href="$_funciones_8c.html#afcd76b505e82ac0b14393f219d8bb2b2" title="Se carga la cadena de estructuras desde el fichero. " alt="" coords="143,56,245,83"/>
+<area shape="rect" id="node7" href="$_funciones_8c.html#ab4e6010b9859890e575eeea50e3eba37" title="Obtiene la tecla de la estructura. " alt="" coords="148,107,240,133"/>
+<area shape="rect" id="node8" href="$_funciones_8c.html#ac5466d32bffe9ef79e079b7f35975d6d" title="se reproduce el fichero de audio de la nota correspondiente " alt="" coords="132,157,256,184"/>
+<area shape="rect" id="node3" href="$_funciones_8c.html#a1e074d0aa9511009eaeffda6cd94691e" title="Se abre o guarda un archivo en base a funcion. " alt="" coords="321,5,415,32"/>
+<area shape="rect" id="node4" href="$_funciones_8c.html#a23b3c3c4a95ed840ae75d8d008a9afac" title="Cargarmos el valor de tecla del fichero. " alt="" coords="305,56,431,83"/>
+<area shape="rect" id="node5" href="$_funciones_8c.html#ac070d77b8475a4090fa5f585a0db04da" title="Se crea un nuevo PSONIDO que ira ultimo o primero, en base a que haya uno o no lo haya..." alt="" coords="318,107,418,133"/>
+<area shape="rect" id="node6" href="$_funciones_8c.html#aaf78bea7d7efffa9f00a32bfae1d7cfc" title="Nos lleva al final de la cadena. " alt="" coords="480,107,583,133"/>
+<area shape="rect" id="node9" href="$_funciones_8c.html#ac1ce4343bb505bb66fe1eceec30ae882" title="Se usa para escoger las notas de LA a SI. " alt="" coords="304,157,432,184"/>
+<area shape="rect" id="node10" href="$_funciones_8c.html#a8908e9c6d4973dca0b02c2de7d4006bf" title="Se lanza el comando del comando que se le pasa. " alt="" coords="309,208,427,235"/>
+</map>

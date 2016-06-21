@@ -1,0 +1,12 @@
+V3 5
+FL "C:/Users/DoctorMckay/Desktop/PROYECTO DIGITAL/PROYECTODIGITAL/MAIN.vhd" 2016/06/17.05:58:55 P.20131013
+AR work/sec/Behavioral 1465921051 \
+      FL "C:/Users/DoctorMckay/Desktop/PROYECTO DIGITAL/PROYECTODIGITAL/MAIN.vhd" \
+      EN work/sec 1465921050
+EN work/Main 1466135949 \
+      FL "C:/Users/DoctorMckay/Desktop/PROYECTO DIGITAL/PROYECTODIGITAL/MAIN.vhd" \
+      PB ieee/std_logic_1164 1381692176 PB ieee/std_logic_arith 1381692177 \
+      PB ieee/STD_LOGIC_UNSIGNED 1381692179
+AR work/Main/Behavioral 1466135950 \
+      FL "C:/Users/DoctorMckay/Desktop/PROYECTO DIGITAL/PROYECTODIGITAL/MAIN.vhd" \
+      EN work/Main 1466135949

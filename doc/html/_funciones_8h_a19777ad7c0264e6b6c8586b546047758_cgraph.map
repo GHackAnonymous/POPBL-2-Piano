@@ -1,0 +1,7 @@
+<map id="tocar" name="tocar">
+<area shape="rect" id="node2" href="$_funciones_8c.html#a6c6cc5d3c94925b682e4b6d23aec41e4" title="Escanea la tecla que ha sido pulsada. " alt="" coords="111,5,221,32"/>
+<area shape="rect" id="node3" href="$_funciones_8c.html#a5d0f58e7865ac23634a8bc0feaf210f0" title="Esta funcion compara la tecla escaneada y la devuelve como la nota correspondiente. " alt="" coords="111,56,221,83"/>
+<area shape="rect" id="node4" href="$_funciones_8c.html#ac5466d32bffe9ef79e079b7f35975d6d" title="se reproduce el fichero de audio de la nota correspondiente " alt="" coords="104,107,228,133"/>
+<area shape="rect" id="node5" href="$_funciones_8c.html#ac1ce4343bb505bb66fe1eceec30ae882" title="Se usa para escoger las notas de LA a SI. " alt="" coords="276,81,404,108"/>
+<area shape="rect" id="node6" href="$_funciones_8c.html#a8908e9c6d4973dca0b02c2de7d4006bf" title="Se lanza el comando del comando que se le pasa. " alt="" coords="281,132,399,159"/>
+</map>

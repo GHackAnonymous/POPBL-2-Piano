@@ -1,0 +1,156 @@
+<html><head><link type='text/css' href='style.css' rel='stylesheet'></head><body class='pgBgnd'>
+<h3 align='center'>Equations</h3>
+<table width='90%' align='center' border='1' cellpadding='0' cellspacing='0'>
+<tr><td>
+</td></tr><tr><td>
+********** Mapped Logic **********
+</td></tr><tr><td>
+</td></tr><tr><td>
+ANODE(0) <= NOT ((NOT contador(0) AND NOT contador(1)));
+</td></tr><tr><td>
+</td></tr><tr><td>
+ANODE(1) <= NOT ('0');
+</td></tr><tr><td>
+</td></tr><tr><td>
+ANODE(2) <= NOT ('0');
+</td></tr><tr><td>
+</td></tr><tr><td>
+ANODE(3) <= NOT ((contador(0) AND contador(1)));
+</td></tr><tr><td>
+</td></tr><tr><td>
+Display(0) <= ((contador(0) AND NOT contador(1))
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (NOT contador(0) AND contador(1))
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (contador(0) AND contador(1) AND switches(1) AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	NOT switches(0)));
+</td></tr><tr><td>
+</td></tr><tr><td>
+Display(1) <= NOT (((contador(0) AND contador(1) AND NOT switches(1))
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (contador(0) AND contador(1) AND NOT switches(0))
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (NOT contador(0) AND NOT contador(1) AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	pin_boton_entradas(1) AND pin_boton_entradas(0))
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (NOT contador(0) AND NOT contador(1) AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	NOT pin_boton_entradas(1) AND NOT pin_boton_entradas(0))));
+</td></tr><tr><td>
+</td></tr><tr><td>
+Display(2) <= NOT (((NOT contador(0) AND NOT contador(1) AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	NOT pin_boton_entradas(1))
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (NOT contador(0) AND NOT contador(1) AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	pin_boton_entradas(0))
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (contador(0) AND contador(1) AND switches(1) AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	NOT switches(0))
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (contador(0) AND contador(1) AND NOT switches(1) AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	switches(0))));
+</td></tr><tr><td>
+</td></tr><tr><td>
+Display(3) <= NOT (((contador(0) AND contador(1) AND switches(1))
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (contador(0) AND contador(1) AND switches(0))
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (NOT contador(0) AND NOT contador(1) AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	NOT pin_boton_entradas(1))));
+</td></tr><tr><td>
+</td></tr><tr><td>
+Display(4) <= ((contador(0) AND NOT contador(1))
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (NOT contador(0) AND contador(1)));
+</td></tr><tr><td>
+</td></tr><tr><td>
+Display(5) <= ((contador(0) AND NOT contador(1))
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (NOT contador(0) AND contador(1)));
+</td></tr><tr><td>
+</td></tr><tr><td>
+Display(6) <= NOT (((NOT contador(0) AND NOT contador(1) AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	NOT pin_boton_entradas(1))
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (NOT contador(0) AND NOT contador(1) AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	pin_boton_entradas(0))
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (contador(0) AND contador(1) AND switches(1) AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	switches(0))
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (contador(0) AND contador(1) AND NOT switches(1) AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	NOT switches(0))));
+</td></tr><tr><td>
+FDCPE_clk2: FDCPE port map (clk2,clk2_D,clock,'0','0','1');
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;clk2_D <= (NOT clkdiv(0) AND NOT clkdiv(10) AND NOT clkdiv(11) AND NOT clkdiv(1) AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	NOT clkdiv(3) AND NOT clkdiv(2) AND NOT clkdiv(4) AND NOT clkdiv(5) AND NOT clkdiv(6) AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	NOT clkdiv(7) AND NOT clkdiv(8) AND NOT clkdiv(9) AND NOT clkdiv(12));
+</td></tr><tr><td>
+FDCPE_clkdiv0: FDCPE port map (clkdiv(0),clkdiv_D(0),clock,'0','0','1');
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;clkdiv_D(0) <= ((NOT clkdiv(0) AND NOT clkdiv(10) AND NOT clkdiv(11) AND NOT clkdiv(3) AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	NOT clkdiv(4) AND NOT clkdiv(5) AND NOT clkdiv(6) AND NOT clkdiv(7) AND NOT clkdiv(8) AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	NOT clkdiv(9) AND NOT clkdiv(12))
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (NOT clkdiv(0) AND NOT clkdiv(10) AND NOT clkdiv(11) AND NOT clkdiv(1) AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	NOT clkdiv(2) AND NOT clkdiv(4) AND NOT clkdiv(5) AND NOT clkdiv(6) AND NOT clkdiv(7) AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	NOT clkdiv(8) AND NOT clkdiv(9) AND NOT clkdiv(12)));
+</td></tr><tr><td>
+FDCPE_clkdiv1: FDCPE port map (clkdiv(1),clkdiv_D(1),clock,'0','0','1');
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;clkdiv_D(1) <= ((clkdiv(0) AND NOT clkdiv(10) AND NOT clkdiv(11) AND NOT clkdiv(1) AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	NOT clkdiv(3) AND NOT clkdiv(4) AND NOT clkdiv(5) AND NOT clkdiv(6) AND NOT clkdiv(7) AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	NOT clkdiv(8) AND NOT clkdiv(9) AND NOT clkdiv(12))
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (NOT clkdiv(0) AND NOT clkdiv(10) AND NOT clkdiv(11) AND clkdiv(1) AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	NOT clkdiv(3) AND NOT clkdiv(4) AND NOT clkdiv(5) AND NOT clkdiv(6) AND NOT clkdiv(7) AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	NOT clkdiv(8) AND NOT clkdiv(9) AND NOT clkdiv(12)));
+</td></tr><tr><td>
+FDCPE_clkdiv2: FDCPE port map (clkdiv(2),clkdiv_D(2),clock,'0','0','1');
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;clkdiv_D(2) <= ((NOT clkdiv(0) AND NOT clkdiv(10) AND NOT clkdiv(11) AND NOT clkdiv(3) AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	clkdiv(2) AND NOT clkdiv(4) AND NOT clkdiv(5) AND NOT clkdiv(6) AND NOT clkdiv(7) AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	NOT clkdiv(8) AND NOT clkdiv(9) AND NOT clkdiv(12))
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (NOT clkdiv(10) AND NOT clkdiv(11) AND NOT clkdiv(1) AND NOT clkdiv(3) AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	clkdiv(2) AND NOT clkdiv(4) AND NOT clkdiv(5) AND NOT clkdiv(6) AND NOT clkdiv(7) AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	NOT clkdiv(8) AND NOT clkdiv(9) AND NOT clkdiv(12))
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (clkdiv(0) AND NOT clkdiv(10) AND NOT clkdiv(11) AND clkdiv(1) AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	NOT clkdiv(3) AND NOT clkdiv(2) AND NOT clkdiv(4) AND NOT clkdiv(5) AND NOT clkdiv(6) AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	NOT clkdiv(7) AND NOT clkdiv(8) AND NOT clkdiv(9) AND NOT clkdiv(12)));
+</td></tr><tr><td>
+FDCPE_clkdiv3: FDCPE port map (clkdiv(3),clkdiv_D(3),clock,'0','0','1');
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;clkdiv_D(3) <= ((clkdiv(0) AND NOT clkdiv(10) AND NOT clkdiv(11) AND clkdiv(1) AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	NOT clkdiv(3) AND clkdiv(2) AND NOT clkdiv(4) AND NOT clkdiv(5) AND NOT clkdiv(6) AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	NOT clkdiv(7) AND NOT clkdiv(8) AND NOT clkdiv(9) AND NOT clkdiv(12))
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	OR (NOT clkdiv(0) AND NOT clkdiv(10) AND NOT clkdiv(11) AND NOT clkdiv(1) AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	clkdiv(3) AND NOT clkdiv(2) AND NOT clkdiv(4) AND NOT clkdiv(5) AND NOT clkdiv(6) AND 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	NOT clkdiv(7) AND NOT clkdiv(8) AND NOT clkdiv(9) AND NOT clkdiv(12)));
+</td></tr><tr><td>
+FDCPE_clkdiv4: FDCPE port map (clkdiv(4),'0',clock,'0','0','1');
+</td></tr><tr><td>
+FDCPE_clkdiv5: FDCPE port map (clkdiv(5),'0',clock,'0','0','1');
+</td></tr><tr><td>
+FDCPE_clkdiv6: FDCPE port map (clkdiv(6),'0',clock,'0','0','1');
+</td></tr><tr><td>
+FDCPE_clkdiv7: FDCPE port map (clkdiv(7),'0',clock,'0','0','1');
+</td></tr><tr><td>
+FDCPE_clkdiv8: FDCPE port map (clkdiv(8),'0',clock,'0','0','1');
+</td></tr><tr><td>
+FDCPE_clkdiv9: FDCPE port map (clkdiv(9),'0',clock,'0','0','1');
+</td></tr><tr><td>
+FDCPE_clkdiv10: FDCPE port map (clkdiv(10),'0',clock,'0','0','1');
+</td></tr><tr><td>
+FDCPE_clkdiv11: FDCPE port map (clkdiv(11),'0',clock,'0','0','1');
+</td></tr><tr><td>
+FDCPE_clkdiv12: FDCPE port map (clkdiv(12),'0',clock,'0','0','1');
+</td></tr><tr><td>
+FTCPE_contador0: FTCPE port map (contador(0),'0',clk2,'0','0','1');
+</td></tr><tr><td>
+FTCPE_contador1: FTCPE port map (contador(1),contador(0),clk2,'0','0','1');
+</td></tr><tr><td>
+LDCP_pin_boton0: LDCP port map (pin_boton(0),botones(0),,'0','0');
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;pin_boton_G(0) <= (NOT contador(0) AND NOT contador(1));
+</td></tr><tr><td>
+LDCP_pin_boton1: LDCP port map (pin_boton(1),botones(1),,'0','0');
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;pin_boton_G(1) <= (NOT contador(0) AND NOT contador(1));
+</td></tr><tr><td>
+LDCP_pin_switch0: LDCP port map (pin_switch(0),switches(0),,'0','0');
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;pin_switch_G(0) <= (contador(0) AND contador(1));
+</td></tr><tr><td>
+LDCP_pin_switch1: LDCP port map (pin_switch(1),switches(1),,'0','0');
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;pin_switch_G(1) <= (contador(0) AND contador(1));
+</td></tr><tr><td>
+</td></tr><tr><td>
+Register Legend:
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; FDCPE (Q,D,C,CLR,PRE,CE); 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; FDDCPE (Q,D,C,CLR,PRE,CE); 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; FTCPE (Q,D,C,CLR,PRE,CE); 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; FTDCPE (Q,D,C,CLR,PRE,CE); 
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; LDCP  (Q,D,G,CLR,PRE); 
+</td></tr><tr><td>
+</td></tr>
+</table>
+<form><span class="pgRef"><table width="90%" align="center"><tr>
+<td align="left"><input type="button" onclick="javascript:parent.leftnav.showTop()" onmouseover="window.status='goto top of page'; return true;" onmouseout="window.status=''" value="back to top"></td>
+<td align="right"><input type="button" onclick="window.print()" onmouseover="window.status='print page'; return true;" onmouseout="window.status=''" value="print page"></td>
+</tr></table></span></form>
+</body></html>

@@ -1,0 +1,21 @@
+xst -intstyle ise -ifn "C:/Users/DoctorMckay/Desktop/PROYECTO DIGITAL/PROYECTODIGITAL/sec.xst" -ofn "C:/Users/DoctorMckay/Desktop/PROYECTO DIGITAL/PROYECTODIGITAL/sec.syr" 
+ngdbuild -intstyle ise -dd _ngo -uc UCF.ucf -p xc2c256-TQ144-7 "sec.ngc" sec.ngd  
+cpldfit -intstyle ise -p xc2c256-7-TQ144 -ofmt vhdl -optimize density -htmlrpt -loc on -slew fast -init low -inputs 32 -pterms 28 -unused keeper -terminate keeper -iostd LVCMOS18 sec.ngd 
+XSLTProcess sec_build.xml 
+tsim -intstyle ise sec sec.nga 
+taengine -intstyle ise -f sec -w --format html1 -l sec_html/tim/timing_report.htm 
+hprep6 -s IEEE1149 -i sec 
+xst -intstyle ise -ifn "C:/Users/DoctorMckay/Desktop/PROYECTO DIGITAL/PROYECTODIGITAL/sec.xst" -ofn "C:/Users/DoctorMckay/Desktop/PROYECTO DIGITAL/PROYECTODIGITAL/sec.syr" 
+ngdbuild -intstyle ise -dd _ngo -uc UCF.ucf -p xc2c256-TQ144-7 "sec.ngc" sec.ngd  
+cpldfit -intstyle ise -p xc2c256-7-TQ144 -ofmt vhdl -optimize density -htmlrpt -loc on -slew fast -init low -inputs 32 -pterms 28 -unused keeper -terminate keeper -iostd LVCMOS18 sec.ngd 
+XSLTProcess sec_build.xml 
+tsim -intstyle ise sec sec.nga 
+hprep6 -s IEEE1149 -i sec 
+xst -intstyle ise -ifn "C:/Users/DoctorMckay/Desktop/PROYECTO DIGITAL/PROYECTODIGITAL/sec.xst" -ofn "C:/Users/DoctorMckay/Desktop/PROYECTO DIGITAL/PROYECTODIGITAL/sec.syr" 
+ngdbuild -intstyle ise -dd _ngo -uc UCF.ucf -p xc2c256-TQ144-7 "sec.ngc" sec.ngd  
+cpldfit -intstyle ise -p xc2c256-7-TQ144 -ofmt vhdl -optimize density -htmlrpt -loc on -slew fast -init low -inputs 32 -pterms 28 -unused keeper -terminate keeper -iostd LVCMOS18 sec.ngd 
+XSLTProcess sec_build.xml 
+tsim -intstyle ise sec sec.nga 
+hprep6 -s IEEE1149 -i sec 
+vhdtdtfi -prj PROYECTODIGITAL -o "C:/Users/DoctorMckay/Desktop/PROYECTO DIGITAL/PROYECTODIGITAL/sec.tfi" -module sec -template C:/Xilinx/14.7/ISE_DS/ISE//data/tfi.tft -deleteonerror -lib work MAIN.vhd 
+xst -intstyle ise -ifn "C:/Users/DoctorMckay/Desktop/PROYECTO DIGITAL/PROYECTODIGITAL/sec.xst" -ofn "C:/Users/DoctorMckay/Desktop/PROYECTO DIGITAL/PROYECTODIGITAL/sec.syr" 

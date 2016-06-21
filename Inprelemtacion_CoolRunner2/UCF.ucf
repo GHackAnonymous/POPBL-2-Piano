@@ -1,0 +1,29 @@
+NET "clock" LOC = p38;
+
+NET "switches[1]" LOC = p124;
+NET "switches[0]" LOC = p39;
+
+NET "pin_switch[0]" LOC = p10;
+NET "pin_switch[1]" LOC = p7;
+
+NET "botones[1]" LOC = p94;
+NET "botones[0]" LOC = p143;
+
+NET "pin_boton[0]" LOC = P5;
+NET "pin_boton[1]" LOC = P3;
+
+NET "pin_boton_entradas[0]" LOC= P9;
+NET "pin_boton_entradas[1]" LOC= P6;
+
+NET "Display[0]" LOC = p56;
+NET "Display[1]" LOC = p53;
+NET "Display[2]" LOC = p60;
+NET "Display[3]" LOC = p58;
+NET "Display[4]" LOC = P57;
+NET "Display[5]" LOC = p54;
+NET "Display[6]" LOC = p61;
+
+NET "ANODE[0]" LOC = p126;
+NET "ANODE[1]" LOC = p128;
+NET "ANODE[2]" LOC = p129;
+NET "ANODE[3]" LOC = p130;

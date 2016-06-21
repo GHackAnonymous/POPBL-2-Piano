@@ -1,0 +1,339 @@
+<html><head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<script src="paths.js"></script><script src="eqns.js"></script><script>
+      var design = "sec";
+      var device = "XC2C256";
+      signals = new Array("ANODE0_SPECSIG","ANODE1_SPECSIG","ANODE2_SPECSIG","ANODE3_SPECSIG","Display0_SPECSIG","Display1_SPECSIG","Display2_SPECSIG","Display3_SPECSIG","Display4_SPECSIG","Display5_SPECSIG","Display6_SPECSIG","clk2","clkdiv0_SPECSIG","clkdiv10_SPECSIG","clkdiv11_SPECSIG","clkdiv12_SPECSIG","clkdiv1_SPECSIG","clkdiv2_SPECSIG","clkdiv3_SPECSIG","clkdiv4_SPECSIG","clkdiv5_SPECSIG","clkdiv6_SPECSIG","clkdiv7_SPECSIG","clkdiv8_SPECSIG","clkdiv9_SPECSIG","contador0_SPECSIG","contador1_SPECSIG","pin_boton0_SPECSIG","pin_boton1_SPECSIG","pin_switch0_SPECSIG","pin_switch1_SPECSIG");
+      sigNegs = new Array("ON","ON","ON","ON","OFF","ON","ON","ON","OFF","OFF","ON","OFF","OFF","OFF","OFF","OFF","OFF","OFF","OFF","OFF","OFF","OFF","OFF","OFF","OFF","ON","OFF","OFF","OFF","OFF","OFF");
+      sigTypes = new Array("","","","","","","","","","","","DFF","DFF","DFF","DFF","DFF","DFF","DFF","DFF","DFF","DFF","DFF","DFF","DFF","DFF","TFF","TFF","LATCH","LATCH","LATCH","LATCH");
+
+      
+           iostyle["botones0_SPECSIG"]=new Array("KPR");
+        
+           iostyle["pin_boton_entradas1_SPECSIG"]=new Array("KPR");
+        
+           iostyle["pin_boton_entradas0_SPECSIG"]=new Array("KPR");
+        
+           iostyle["clock"]=new Array("KPR");
+        
+           iostyle["switches0_SPECSIG"]=new Array("KPR");
+        
+           iostyle["switches1_SPECSIG"]=new Array("KPR");
+        
+           iostyle["botones1_SPECSIG"]=new Array("KPR");
+        
+        specSig["switches1_SPECSIG"]=new Array("switches<1>");
+      
+        specSig["switches0_SPECSIG"]=new Array("switches<0>");
+      
+        specSig["pin_boton_entradas1_SPECSIG"]=new Array("pin_boton_entradas<1>");
+      
+        specSig["pin_boton_entradas0_SPECSIG"]=new Array("pin_boton_entradas<0>");
+      
+        specSig["botones0_SPECSIG"]=new Array("botones<0>");
+      
+        specSig["botones1_SPECSIG"]=new Array("botones<1>");
+      
+        specSig["b_SPECSIG"]=new Array("(b)");
+      
+        specSig["contador0_SPECSIG"]=new Array("contador<0>");
+      
+        specSig["clkdiv2_SPECSIG"]=new Array("clkdiv<2>");
+      
+        specSig["clkdiv3_SPECSIG"]=new Array("clkdiv<3>");
+      
+        specSig["clkdiv0_SPECSIG"]=new Array("clkdiv<0>");
+      
+        specSig["pin_boton1_SPECSIG"]=new Array("pin_boton<1>");
+      
+        specSig["pin_boton0_SPECSIG"]=new Array("pin_boton<0>");
+      
+        specSig["pin_switch1_SPECSIG"]=new Array("pin_switch<1>");
+      
+        specSig["pin_switch0_SPECSIG"]=new Array("pin_switch<0>");
+      
+        specSig["ANODE0_SPECSIG"]=new Array("ANODE<0>");
+      
+        specSig["ANODE1_SPECSIG"]=new Array("ANODE<1>");
+      
+        specSig["ANODE2_SPECSIG"]=new Array("ANODE<2>");
+      
+        specSig["ANODE3_SPECSIG"]=new Array("ANODE<3>");
+      
+        specSig["Display6_SPECSIG"]=new Array("Display<6>");
+      
+        specSig["Display2_SPECSIG"]=new Array("Display<2>");
+      
+        specSig["Display3_SPECSIG"]=new Array("Display<3>");
+      
+        specSig["Display4_SPECSIG"]=new Array("Display<4>");
+      
+        specSig["Display0_SPECSIG"]=new Array("Display<0>");
+      
+        specSig["Display5_SPECSIG"]=new Array("Display<5>");
+      
+        specSig["Display1_SPECSIG"]=new Array("Display<1>");
+      
+        specSig["clkdiv1_SPECSIG"]=new Array("clkdiv<1>");
+      
+        specSig["clkdiv9_SPECSIG"]=new Array("clkdiv<9>");
+      
+        specSig["contador1_SPECSIG"]=new Array("contador<1>");
+      
+        specSig["clkdiv8_SPECSIG"]=new Array("clkdiv<8>");
+      
+        specSig["clkdiv7_SPECSIG"]=new Array("clkdiv<7>");
+      
+        specSig["clkdiv6_SPECSIG"]=new Array("clkdiv<6>");
+      
+        specSig["clkdiv5_SPECSIG"]=new Array("clkdiv<5>");
+      
+        specSig["clkdiv4_SPECSIG"]=new Array("clkdiv<4>");
+      
+        specSig["clkdiv12_SPECSIG"]=new Array("clkdiv<12>");
+      
+        specSig["clkdiv11_SPECSIG"]=new Array("clkdiv<11>");
+      
+        specSig["clkdiv10_SPECSIG"]=new Array("clkdiv<10>");
+      
+            pterms["FB1_0"]=new Array("/clkdiv0_SPECSIG","/clkdiv10_SPECSIG","/clkdiv11_SPECSIG","clkdiv1_SPECSIG","/clkdiv3_SPECSIG","/clkdiv4_SPECSIG","/clkdiv5_SPECSIG","/clkdiv6_SPECSIG","/clkdiv7_SPECSIG","/clkdiv8_SPECSIG","/clkdiv9_SPECSIG","/clkdiv12_SPECSIG");
+          
+            pterms["FB1_1"]=new Array("clkdiv0_SPECSIG","/clkdiv10_SPECSIG","/clkdiv11_SPECSIG","/clkdiv1_SPECSIG","/clkdiv3_SPECSIG","/clkdiv4_SPECSIG","/clkdiv5_SPECSIG","/clkdiv6_SPECSIG","/clkdiv7_SPECSIG","/clkdiv8_SPECSIG","/clkdiv9_SPECSIG","/clkdiv12_SPECSIG");
+          
+            pterms["FB1_2"]=new Array("/clkdiv0_SPECSIG","/clkdiv10_SPECSIG","/clkdiv11_SPECSIG","/clkdiv1_SPECSIG","/clkdiv2_SPECSIG","/clkdiv4_SPECSIG","/clkdiv5_SPECSIG","/clkdiv6_SPECSIG","/clkdiv7_SPECSIG","/clkdiv8_SPECSIG","/clkdiv9_SPECSIG","/clkdiv12_SPECSIG");
+          
+            pterms["FB1_3"]=new Array("/clkdiv0_SPECSIG","/clkdiv10_SPECSIG","/clkdiv11_SPECSIG","/clkdiv3_SPECSIG","/clkdiv4_SPECSIG","/clkdiv5_SPECSIG","/clkdiv6_SPECSIG","/clkdiv7_SPECSIG","/clkdiv8_SPECSIG","/clkdiv9_SPECSIG","/clkdiv12_SPECSIG");
+          
+            pterms["FB1_4"]=new Array("clk2");
+          
+            pterms["FB1_5"]=new Array("/clkdiv0_SPECSIG","/clkdiv10_SPECSIG","/clkdiv11_SPECSIG","/clkdiv1_SPECSIG","clkdiv3_SPECSIG","/clkdiv2_SPECSIG","/clkdiv4_SPECSIG","/clkdiv5_SPECSIG","/clkdiv6_SPECSIG","/clkdiv7_SPECSIG","/clkdiv8_SPECSIG","/clkdiv9_SPECSIG","/clkdiv12_SPECSIG");
+          
+            pterms["FB1_6"]=new Array("clkdiv0_SPECSIG","/clkdiv10_SPECSIG","/clkdiv11_SPECSIG","clkdiv1_SPECSIG","/clkdiv3_SPECSIG","clkdiv2_SPECSIG","/clkdiv4_SPECSIG","/clkdiv5_SPECSIG","/clkdiv6_SPECSIG","/clkdiv7_SPECSIG","/clkdiv8_SPECSIG","/clkdiv9_SPECSIG","/clkdiv12_SPECSIG");
+          
+            pterms["FB1_7"]=new Array("/clkdiv0_SPECSIG","/clkdiv10_SPECSIG","/clkdiv11_SPECSIG","/clkdiv3_SPECSIG","clkdiv2_SPECSIG","/clkdiv4_SPECSIG","/clkdiv5_SPECSIG","/clkdiv6_SPECSIG","/clkdiv7_SPECSIG","/clkdiv8_SPECSIG","/clkdiv9_SPECSIG","/clkdiv12_SPECSIG");
+          
+            pterms["FB1_8"]=new Array("/clkdiv10_SPECSIG","/clkdiv11_SPECSIG","/clkdiv1_SPECSIG","/clkdiv3_SPECSIG","clkdiv2_SPECSIG","/clkdiv4_SPECSIG","/clkdiv5_SPECSIG","/clkdiv6_SPECSIG","/clkdiv7_SPECSIG","/clkdiv8_SPECSIG","/clkdiv9_SPECSIG","/clkdiv12_SPECSIG");
+          
+            pterms["FB1_9"]=new Array("clkdiv0_SPECSIG","/clkdiv10_SPECSIG","/clkdiv11_SPECSIG","clkdiv1_SPECSIG","/clkdiv3_SPECSIG","/clkdiv2_SPECSIG","/clkdiv4_SPECSIG","/clkdiv5_SPECSIG","/clkdiv6_SPECSIG","/clkdiv7_SPECSIG","/clkdiv8_SPECSIG","/clkdiv9_SPECSIG","/clkdiv12_SPECSIG");
+          
+            pterms["FB1_16"]=new Array("contador0_SPECSIG");
+          
+            pterms["FB1_49"]=new Array("/clkdiv0_SPECSIG","/clkdiv10_SPECSIG","/clkdiv11_SPECSIG","/clkdiv1_SPECSIG","/clkdiv3_SPECSIG","/clkdiv2_SPECSIG","/clkdiv4_SPECSIG","/clkdiv5_SPECSIG","/clkdiv6_SPECSIG","/clkdiv7_SPECSIG","/clkdiv8_SPECSIG","/clkdiv9_SPECSIG","/clkdiv12_SPECSIG");
+          
+            pterms["FB2_0"]=new Array("switches0_SPECSIG");
+          
+            pterms["FB2_1"]=new Array("switches1_SPECSIG");
+          
+            pterms["FB2_4"]=new Array("/contador0_SPECSIG","/contador1_SPECSIG");
+          
+            pterms["FB2_16"]=new Array("botones1_SPECSIG");
+          
+            pterms["FB2_22"]=new Array("botones0_SPECSIG");
+          
+            pterms["FB2_46"]=new Array("contador0_SPECSIG","contador1_SPECSIG");
+          
+            pterms["FB2_52"]=new Array("contador0_SPECSIG","contador1_SPECSIG");
+          
+            pterms["FB11_46"]=new Array("/contador0_SPECSIG","/contador1_SPECSIG");
+          
+            pterms["FB11_55"]=new Array("contador0_SPECSIG","contador1_SPECSIG");
+          
+            pterms["FB14_0"]=new Array("contador0_SPECSIG","contador1_SPECSIG","switches1_SPECSIG","switches0_SPECSIG");
+          
+            pterms["FB14_1"]=new Array("contador0_SPECSIG","contador1_SPECSIG","/switches1_SPECSIG","/switches0_SPECSIG");
+          
+            pterms["FB14_2"]=new Array("/contador0_SPECSIG","/contador1_SPECSIG","/pin_boton_entradas1_SPECSIG");
+          
+            pterms["FB14_3"]=new Array("/contador0_SPECSIG","/contador1_SPECSIG","pin_boton_entradas0_SPECSIG");
+          
+            pterms["FB16_0"]=new Array("contador0_SPECSIG","contador1_SPECSIG","/switches1_SPECSIG");
+          
+            pterms["FB16_1"]=new Array("contador0_SPECSIG","contador1_SPECSIG","/switches0_SPECSIG");
+          
+            pterms["FB16_2"]=new Array("/contador0_SPECSIG","/contador1_SPECSIG","pin_boton_entradas1_SPECSIG","pin_boton_entradas0_SPECSIG");
+          
+            pterms["FB16_3"]=new Array("/contador0_SPECSIG","/contador1_SPECSIG","/pin_boton_entradas1_SPECSIG","/pin_boton_entradas0_SPECSIG");
+          
+            pterms["FB16_4"]=new Array("contador0_SPECSIG","contador1_SPECSIG","/switches1_SPECSIG","switches0_SPECSIG");
+          
+            pterms["FB16_5"]=new Array("contador0_SPECSIG","contador1_SPECSIG","switches1_SPECSIG","/switches0_SPECSIG");
+          
+            pterms["FB16_6"]=new Array("/contador0_SPECSIG","/contador1_SPECSIG","/pin_boton_entradas1_SPECSIG");
+          
+            pterms["FB16_7"]=new Array("/contador0_SPECSIG","/contador1_SPECSIG","pin_boton_entradas0_SPECSIG");
+          
+            pterms["FB16_8"]=new Array("contador0_SPECSIG","contador1_SPECSIG","switches1_SPECSIG");
+          
+            pterms["FB16_9"]=new Array("contador0_SPECSIG","contador1_SPECSIG","switches0_SPECSIG");
+          
+            pterms["FB16_10"]=new Array("/contador0_SPECSIG","contador1_SPECSIG");
+          
+            pterms["FB16_11"]=new Array("contador0_SPECSIG","/contador1_SPECSIG");
+          
+          d2["clkdiv1_SPECSIG"]=new Array("FB1_1","FB1_0");
+          
+              gblclk["clkdiv1_SPECSIG"]=new Array("clock");
+            prld["clkdiv1_SPECSIG"]="GND";
+          d2["clkdiv9_SPECSIG"]=new Array("GND");
+          
+              gblclk["clkdiv9_SPECSIG"]=new Array("clock");
+            prld["clkdiv9_SPECSIG"]="GND";
+          d1["contador1_SPECSIG"]=new Array("FB1_16");
+          
+              clk["contador1_SPECSIG"]=new Array("FB1_4");
+              prld["contador1_SPECSIG"]="GND";
+          d2["contador0_SPECSIG"]=new Array("GND");
+          
+              clk["contador0_SPECSIG"]=new Array("FB1_4");
+              prld["contador0_SPECSIG"]="GND";
+          d2["clkdiv8_SPECSIG"]=new Array("GND");
+          
+              gblclk["clkdiv8_SPECSIG"]=new Array("clock");
+            prld["clkdiv8_SPECSIG"]="GND";
+          d2["clkdiv2_SPECSIG"]=new Array("FB1_7","FB1_8","FB1_9");
+          
+              gblclk["clkdiv2_SPECSIG"]=new Array("clock");
+            prld["clkdiv2_SPECSIG"]="GND";
+          d2["clkdiv7_SPECSIG"]=new Array("GND");
+          
+              gblclk["clkdiv7_SPECSIG"]=new Array("clock");
+            prld["clkdiv7_SPECSIG"]="GND";
+          d2["clkdiv6_SPECSIG"]=new Array("GND");
+          
+              gblclk["clkdiv6_SPECSIG"]=new Array("clock");
+            prld["clkdiv6_SPECSIG"]="GND";
+          d2["clkdiv5_SPECSIG"]=new Array("GND");
+          
+              gblclk["clkdiv5_SPECSIG"]=new Array("clock");
+            prld["clkdiv5_SPECSIG"]="GND";
+          d2["clkdiv4_SPECSIG"]=new Array("GND");
+          
+              gblclk["clkdiv4_SPECSIG"]=new Array("clock");
+            prld["clkdiv4_SPECSIG"]="GND";
+          d2["clkdiv12_SPECSIG"]=new Array("GND");
+          
+              gblclk["clkdiv12_SPECSIG"]=new Array("clock");
+            prld["clkdiv12_SPECSIG"]="GND";
+          d2["clkdiv3_SPECSIG"]=new Array("FB1_6","FB1_5");
+          
+              gblclk["clkdiv3_SPECSIG"]=new Array("clock");
+            prld["clkdiv3_SPECSIG"]="GND";
+          d2["clkdiv0_SPECSIG"]=new Array("FB1_3","FB1_2");
+          
+              gblclk["clkdiv0_SPECSIG"]=new Array("clock");
+            prld["clkdiv0_SPECSIG"]="GND";
+          d1["clk2"]=new Array("FB1_49");
+          
+              gblclk["clk2"]=new Array("clock");
+            prld["clk2"]="GND";
+          d2["clkdiv11_SPECSIG"]=new Array("GND");
+          
+              gblclk["clkdiv11_SPECSIG"]=new Array("clock");
+            prld["clkdiv11_SPECSIG"]="GND";
+          d2["clkdiv10_SPECSIG"]=new Array("GND");
+          
+              gblclk["clkdiv10_SPECSIG"]=new Array("clock");
+            prld["clkdiv10_SPECSIG"]="GND";
+          d1["pin_boton1_SPECSIG"]=new Array("FB2_16");
+          
+              clk["pin_boton1_SPECSIG"]=new Array("FB2_4");
+              prld["pin_boton1_SPECSIG"]="GND";
+          d1["pin_boton0_SPECSIG"]=new Array("FB2_22");
+          
+              clk["pin_boton0_SPECSIG"]=new Array("FB2_4");
+              prld["pin_boton0_SPECSIG"]="GND";
+          d2["pin_switch1_SPECSIG"]=new Array("FB2_1");
+          
+              clk["pin_switch1_SPECSIG"]=new Array("FB2_46");
+              prld["pin_switch1_SPECSIG"]="GND";
+          d2["pin_switch0_SPECSIG"]=new Array("FB2_0");
+          
+              clk["pin_switch0_SPECSIG"]=new Array("FB2_46");
+              prld["pin_switch0_SPECSIG"]="GND";
+          d1["ANODE0_SPECSIG"]=new Array("FB11_46");
+          
+          d2["ANODE1_SPECSIG"]=new Array("GND");
+          
+          d2["ANODE2_SPECSIG"]=new Array("GND");
+          
+          d1["ANODE3_SPECSIG"]=new Array("FB11_55");
+          
+          d2["Display6_SPECSIG"]=new Array("FB14_2","FB14_3","FB14_0","FB14_1");
+          
+          d2["Display2_SPECSIG"]=new Array("FB16_6","FB16_7","FB16_5","FB16_4");
+          
+          d2["Display3_SPECSIG"]=new Array("FB16_8","FB16_9","FB16_6");
+          
+          d2["Display4_SPECSIG"]=new Array("FB16_11","FB16_10");
+          
+          d2["Display0_SPECSIG"]=new Array("FB16_11","FB16_10","FB16_5");
+          
+          d2["Display5_SPECSIG"]=new Array("FB16_11","FB16_10");
+          
+          d2["Display1_SPECSIG"]=new Array("FB16_0","FB16_1","FB16_2","FB16_3");
+          
+
+      uimSignals = new Array();
+
+      uimSigNegs = new Array();
+
+      uimPterms = new Array();
+      
+
+      
+        function getEqnList() {
+          var str = "<html><head><link type='text/css' href='style.css' rel='stylesheet'></head><body class='pgBgnd'>";
+          str += "<center><h3>Equations</h3></center>";
+          str += "<table width='90%' align='center' border='1' cellpadding='0' cellspacing='0'>";
+          for (s=0; s<uimSignals.length; s++) {
+            str += "<tr><td>";
+            str += retUimEqn(uimSignals[s]);
+            str += "</td></tr>";
+          }
+          for (s=0; s<signals.length; s++) {
+            str += "<tr><td>";
+            str += retEqn(signals[s]);
+            str += "</td></tr>";
+          }
+
+          var legend = retLegend();
+		      if (legend != "") {
+		        str += "<tr><td>" + legend + "</td></tr>";
+		      }
+
+          str += "</table>";
+          str += "<form><span class='pgRef'>";
+
+          if (!parent.leftnav.IsNS()) {
+            str += "<table width='90%' align='center'>";
+            str += "<tr><td align='left'><input type='button' value='back to top' ";
+            str += "onclick='javascript:parent.leftnav.showEqnAll()' ";
+            str += "onmouseover=\"window.status='goto top of page'; return true;\" ";
+            str += "onmouseout=\"window.status=''\">";
+            str += "</td>";
+            str += "<td align='right'>";
+            str += "<input type='button' value='print page' ";
+            str += "onclick='javascript:window.print()' ";
+            str += "onmouseover=\"window.status='print page'; return true;\" ";
+            str += "onmouseout=\"window.status=''\">";
+            str += "</td>";
+            str += "</tr></table>";
+          }
+          else {
+            str += "<table width='90%' align='center'>";
+            str += "<tr><td align='left'><a href='javascript:parent.leftnav.showEqnAll()'>back to top</a>";
+            str += "</td>";
+            str += "<td align='right'>";
+            str += "<a href='javascript:window.print()'>";
+            str += "print page</a>";
+            str += "</td>";
+            str += "</tr></table>";
+          }
+
+          str += "</span></form>";
+          str += "</body></html>";
+          return str;
+        }
+      
+    </script>
+</head></html>

@@ -1,0 +1,16 @@
+
+
+
+// Instantiate the module
+sec instance_name (
+    .Display(Display), 
+    .ANODE(ANODE), 
+    .switches(switches), 
+    .pin_switch(pin_switch), 
+    .botones(botones), 
+    .pin_boton(pin_boton), 
+    .pin_boton_entradas(pin_boton_entradas), 
+    .clock(clock)
+    );
+
+

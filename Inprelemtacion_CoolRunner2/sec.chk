@@ -1,0 +1,123 @@
+
+----------------------------------------
+|  P a r t i t i o n    S u c c e e d  |
+----------------------------------------
+0 Group(s)
+
+GCLK2: 3=clock.p
+----------------- B l o c k 0 ------------------
+PLApt(12/56), Fanin(15/38), Clk(1/3), Bct(1/4), Pin(1/6), Mcell(16/16)
+PLApts[12/50] 10 11 7 9 17 8 13 12 14 15 () () () () () () 6 () () () () () () () () () () () () () () () () () () () () () () () () () () () () () () () () 16
+Fanins[15] clk2.n clkdiv<0>.n clkdiv<10>.n clkdiv<11>.n clkdiv<12>.n clkdiv<1>.n clkdiv<2>.n clkdiv<3>.n clkdiv<4>.n clkdiv<5>.n clkdiv<6>.n clkdiv<7>.n clkdiv<8>.n clkdiv<9>.n contador<0>.n
+clk[1] clock 
+CTC: (pt=17) clk2 ;
+CTR: 
+CTS: 
+CTE: 
+vref: [0]
+Signal[17] [botones<0>(143)] [clkdiv<10>(160)] [clkdiv<11>(159)] [clkdiv<12>(155)] [clkdiv<4>(154)]  
+           [clkdiv<5>(153)] [clkdiv<6>(152)] [clkdiv<7>(151)] [clkdiv<8>(149)] [clkdiv<9>(146)]  
+           [clkdiv<1>(145)] [clk2(158)] [clkdiv<0>(157)] [clkdiv<3>(156)] [clkdiv<2>(150)]  
+           [contador<0>(148)] [contador<1>(147)] 
+Signal[17] [ 0: clkdiv<1>(145)  ][ 1: clkdiv<9>(146)  ][ 2: contador<1>(147) botones<0>(143)  ][ 3:  
+           contador<0>(148) (142)  ][ 4: clkdiv<8>(149)  ][ 5: clkdiv<2>(150) (140)  ][ 6: clkdiv<7>(151)  ] 
+           [ 7: clkdiv<6>(152)  ][ 8: clkdiv<5>(153)  ][ 9: clkdiv<4>(154)  ][ 10: clkdiv<12>(155)  ][ 11:  
+           clkdiv<3>(156) (139)  ][ 12: clkdiv<0>(157) (138)  ][ 13: clk2(158) (137)  ][ 14: clkdiv<11>(159)  
+            ][ 15: clkdiv<10>(160)  ]
+----------------- B l o c k 1 ------------------
+PLApt(7/56), Fanin(6/38), Clk(0/3), Bct(1/4), Pin(6/8), Mcell(4/16)
+PLApts[7/53] 2 1 () () 29 () () () () () () () () () () () 5 () () () () () 4 () () () () () () () () () () () () () () () () () () () () () () () 18 () () () () () 18
+Fanins[ 6] contador<0>.n contador<1>.n botones<0>.p botones<1>.p switches<0>.p switches<1>.p
+clk[0] 
+CTC: (pt=29) contador<0>' contador<1>' ;
+CTR: 
+CTS: 
+CTE: 
+vref: [0]
+Signal[ 6] [pin_boton<0>(165),pin_boton<0>(5)] [pin_boton<1>(163),pin_boton<1>(3)]  
+           [pin_switch<0>(175),pin_switch<0>(10)] [pin_switch<1>(173),pin_switch<1>(7)]  
+           [pin_boton_entradas<0>(9)] [pin_boton_entradas<1>(6)] 
+Signal[ 6] [ 0: (2)  ][ 1:  ][ 2: pin_boton<1>(163) pin_boton<1>(3)  ][ 3: (4)  ][ 4: pin_boton<0>(165)  
+           pin_boton<0>(5)  ][ 5:  ][ 6:  ][ 7:  ][ 8:  ][ 9:  ][ 10:  ][ 11: pin_boton_entradas<1>(6)  ] 
+           [ 12: pin_switch<1>(173) pin_switch<1>(7)  ][ 13: pin_boton_entradas<0>(9)  ][ 14:  
+           pin_switch<0>(175) pin_switch<0>(10)  ][ 15:  ]
+----------------- B l o c k 2 ------------------
+----------------- B l o c k 3 ------------------
+----------------- B l o c k 4 ------------------
+----------------- B l o c k 5 ------------------
+PLApt(0/56), Fanin(0/38), Clk(0/3), Bct(0/4), Pin(2/8), Mcell(0/16)
+PLApts[0/0]
+Fanins[ 0]
+clk[0] 
+CTC: 
+CTR: 
+CTS: 
+CTE: 
+vref: [0]
+Signal[ 2] [clock(38)] [switches<0>(39)] 
+Signal[ 2] [ 0: (34)  ][ 1: (35)  ][ 2:  ][ 3: clock(38)  ][ 4:  ][ 5:  ][ 6:  ][ 7:  ][ 8:  ][ 9:  ][ 10:  ] 
+           [ 11: switches<0>(39)  ][ 12: (40)  ][ 13: (41)  ][ 14: (42)  ][ 15: (43)  ]
+----------------- B l o c k 6 ------------------
+----------------- B l o c k 7 ------------------
+----------------- B l o c k 8 ------------------
+----------------- B l o c k 9 ------------------
+----------------- B l o c k 10 ------------------
+PLApt(2/56), Fanin(2/38), Clk(0/3), Bct(0/4), Pin(5/8), Mcell(4/16)
+PLApts[2/56] () () () () () () () () () () () () () () () () () () () () () () () () () () () () () () () () () () () () () () () () () () () () () () 29 () () () () () () () () 18
+Fanins[ 2] contador<0>.n contador<1>.n
+clk[0] 
+CTC: 
+CTR: 
+CTS: 
+CTE: 
+vref: [0]
+Signal[ 5] [ANODE<0>(317),ANODE<0>(126)] [ANODE<3>(320),ANODE<3>(130)] [ANODE<1>(318),ANODE<1>(128)]  
+           [ANODE<2>(319),ANODE<2>(129)] [switches<1>(124)] 
+Signal[ 5] [ 0:  ][ 1:  ][ 2:  ][ 3:  ][ 4: (120)  ][ 5: (121)  ][ 6:  ][ 7:  ][ 8:  ][ 9:  ][ 10:  
+           switches<1>(124)  ][ 11: (125)  ][ 12: ANODE<0>(317) ANODE<0>(126)  ][ 13: ANODE<1>(318)  
+           ANODE<1>(128)  ][ 14: ANODE<2>(319) ANODE<2>(129)  ][ 15: ANODE<3>(320) ANODE<3>(130)  ]
+----------------- B l o c k 11 ------------------
+PLApt(0/56), Fanin(0/38), Clk(0/3), Bct(0/4), Pin(1/6), Mcell(0/16)
+PLApts[0/0]
+Fanins[ 0]
+clk[0] 
+CTC: 
+CTR: 
+CTS: 
+CTE: 
+vref: [0]
+Signal[ 1] [botones<1>(94)] 
+Signal[ 1] [ 0:  ][ 1: (100)  ][ 2:  ][ 3:  ][ 4:  ][ 5:  ][ 6:  ][ 7:  ][ 8:  ][ 9:  ][ 10: (98)  ][ 11:  
+           (97)  ][ 12: (96)  ][ 13: (95)  ][ 14: botones<1>(94)  ][ 15:  ]
+----------------- B l o c k 12 ------------------
+----------------- B l o c k 13 ------------------
+PLApt(4/56), Fanin(6/38), Clk(0/3), Bct(0/4), Pin(1/8), Mcell(1/16)
+PLApts[4/4] 22 26 30 31
+Fanins[ 6] contador<0>.n contador<1>.n pin_boton_entradas<0>.p pin_boton_entradas<1>.p switches<0>.p switches<1>.p
+clk[0] 
+CTC: 
+CTR: 
+CTS: 
+CTE: 
+vref: [0]
+Signal[ 1] [Display<6>(368),Display<6>(61)] 
+Signal[ 1] [ 0: (74)  ][ 1: (71)  ][ 2: (70)  ][ 3: (69)  ][ 4:  ][ 5: (68)  ][ 6:  ][ 7:  ][ 8:  ][ 9:  ] 
+           [ 10:  ][ 11:  ][ 12: (66)  ][ 13: (64)  ][ 14:  ][ 15: Display<6>(368) Display<6>(61)  ]
+----------------- B l o c k 14 ------------------
+----------------- B l o c k 15 ------------------
+PLApt(12/56), Fanin(6/38), Clk(0/3), Bct(0/4), Pin(6/7), Mcell(6/16)
+PLApts[12/12] 20 24 32 33 23 25 30 31 19 21 27 28
+Fanins[ 6] contador<0>.n contador<1>.n pin_boton_entradas<0>.p pin_boton_entradas<1>.p switches<0>.p switches<1>.p
+clk[0] 
+CTC: 
+CTR: 
+CTS: 
+CTE: 
+vref: [0]
+Signal[ 6] [Display<1>(400),Display<1>(53)] [Display<2>(389),Display<2>(60)]  
+           [Display<3>(395),Display<3>(58)] [Display<0>(397),Display<0>(56)]  
+           [Display<4>(396),Display<4>(57)] [Display<5>(399),Display<5>(54)] 
+Signal[ 6] [ 0:  ][ 1:  ][ 2:  ][ 3:  ][ 4: Display<2>(389) Display<2>(60)  ][ 5: (59)  ][ 6:  ][ 7:  ][ 8:  
+            ][ 9:  ][ 10: Display<3>(395) Display<3>(58)  ][ 11: Display<4>(396) Display<4>(57)  ][ 12:  
+           Display<0>(397) Display<0>(56)  ][ 13:  ][ 14: Display<5>(399) Display<5>(54)  ][ 15:  
+           Display<1>(400) Display<1>(53)  ]

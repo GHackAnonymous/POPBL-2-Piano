@@ -1,0 +1,13 @@
+<map id="grabar" name="grabar">
+<area shape="rect" id="node2" href="$_funciones_8c.html#a6c6cc5d3c94925b682e4b6d23aec41e4" title="Escanea la tecla que ha sido pulsada. " alt="" coords="119,5,229,32"/>
+<area shape="rect" id="node3" href="$_funciones_8c.html#a5d0f58e7865ac23634a8bc0feaf210f0" title="Esta funcion compara la tecla escaneada y la devuelve como la nota correspondiente. " alt="" coords="119,56,229,83"/>
+<area shape="rect" id="node4" href="$_funciones_8c.html#ac5466d32bffe9ef79e079b7f35975d6d" title="se reproduce el fichero de audio de la nota correspondiente " alt="" coords="112,107,236,133"/>
+<area shape="rect" id="node7" href="$_funciones_8c.html#aa48cc24f6d0cc300c9ee42e62ce94531" title="Guardar las notas en la cadena de estructuras. " alt="" coords="122,157,226,184"/>
+<area shape="rect" id="node10" href="$_funciones_8c.html#ad10cfb118e5a277013cfad3607a0a6e8" title="Se guarda la cadena de estructuras creadas en un fichero. " alt="" coords="118,208,230,235"/>
+<area shape="rect" id="node5" href="$_funciones_8c.html#ac1ce4343bb505bb66fe1eceec30ae882" title="Se usa para escoger las notas de LA a SI. " alt="" coords="284,56,412,83"/>
+<area shape="rect" id="node6" href="$_funciones_8c.html#a8908e9c6d4973dca0b02c2de7d4006bf" title="Se lanza el comando del comando que se le pasa. " alt="" coords="289,107,407,133"/>
+<area shape="rect" id="node8" href="$_funciones_8c.html#ac070d77b8475a4090fa5f585a0db04da" title="Se crea un nuevo PSONIDO que ira ultimo o primero, en base a que haya uno o no lo haya..." alt="" coords="298,157,398,184"/>
+<area shape="rect" id="node9" href="$_funciones_8c.html#aaf78bea7d7efffa9f00a32bfae1d7cfc" title="Nos lleva al final de la cadena. " alt="" coords="460,157,563,184"/>
+<area shape="rect" id="node11" href="$_funciones_8c.html#a1e074d0aa9511009eaeffda6cd94691e" title="Se abre o guarda un archivo en base a funcion. " alt="" coords="301,208,395,235"/>
+<area shape="rect" id="node12" href="$_funciones_8c.html#add37b1aaa599c9cb556ce56e447cd2ca" title="Guarda la tecla de la estructura en el fichero. " alt="" coords="300,259,396,285"/>
+</map>

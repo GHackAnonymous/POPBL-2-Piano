@@ -1,0 +1,7 @@
+<map id="abrir_archivo" name="abrir_archivo">
+<area shape="rect" id="node2" href="$_funciones_8h.html#afcd76b505e82ac0b14393f219d8bb2b2" title="Se carga la cadena de estructuras desde el fichero. " alt="" coords="153,5,255,32"/>
+<area shape="rect" id="node5" href="$_funciones_8h.html#ad10cfb118e5a277013cfad3607a0a6e8" title="Se guarda la cadena de estructuras creadas en un fichero. " alt="" coords="148,56,260,83"/>
+<area shape="rect" id="node3" href="$_funciones_8h.html#af9322314831b85a8ac77c37b416acdd2" title="La funcion coge la anterior grabacion y la reproduce. " alt="" coords="308,5,387,32"/>
+<area shape="rect" id="node4" href="$_main_8c.html#ae66f6b31b5ad750f1fe042a706a4e3d4" title="main" alt="" coords="435,31,485,57"/>
+<area shape="rect" id="node6" href="$_funciones_8h.html#aa5f6626115698494570957133816b8c7" title="Genera un fichero en base a las notas que sean recibidas a la hora de presionar teclas. " alt="" coords="318,56,377,83"/>
+</map>

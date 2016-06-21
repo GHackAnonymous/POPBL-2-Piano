@@ -1,0 +1,341 @@
+MDF Database:  version 1.0
+MDF_INFO | sec | XC2C256-7-TQ144
+MACROCELL | 10 | 12 | ANODE<0>_MC
+ATTRIBUTES | 1074004738 | 0
+INPUTS | 2 | contador<0>  | contador<1>
+INPUTMC | 2 | 0 | 3 | 0 | 2
+EQ | 1 | 
+   !ANODE<0> = !contador<0> & !contador<1>;	// (1 pt, 2 inp)
+
+MACROCELL | 0 | 3 | contador<0>_MC
+ATTRIBUTES | 2285896448 | 0
+OUTPUTMC | 12 | 0 | 2 | 10 | 12 | 10 | 15 | 15 | 12 | 15 | 15 | 15 | 4 | 15 | 10 | 15 | 11 | 15 | 14 | 13 | 15 | 1 | 14 | 1 | 12
+INPUTS | 0
+LCT | 1 | 2 | Internal_Name
+EQ | 2 | 
+   !contador<0>.T := Gnd;	// (0 pt, 0 inp)
+    contador<0>.CLK = clk2;	// CTC	(1 pt, 1 inp)
+
+MACROCELL | 0 | 13 | clk2_MC
+ATTRIBUTES | 2155905792 | 0
+INPUTS | 13 | clkdiv<0>  | clkdiv<10>  | clkdiv<11>  | clkdiv<1>  | clkdiv<3>  | clkdiv<2>  | clkdiv<4>  | clkdiv<5>  | clkdiv<6>  | clkdiv<7>  | clkdiv<8>  | clkdiv<9>  | clkdiv<12>
+INPUTMC | 13 | 0 | 12 | 0 | 15 | 0 | 14 | 0 | 0 | 0 | 11 | 0 | 5 | 0 | 9 | 0 | 8 | 0 | 7 | 0 | 6 | 0 | 4 | 0 | 1 | 0 | 10
+EQ | 4 | 
+   clk2 := !clkdiv<0> & !clkdiv<10> & !clkdiv<11> & !clkdiv<1> & 
+	!clkdiv<3> & !clkdiv<2> & !clkdiv<4> & !clkdiv<5> & !clkdiv<6> & 
+	!clkdiv<7> & !clkdiv<8> & !clkdiv<9> & !clkdiv<12>;	// (1 pt, 13 inp)
+   clk2.CLK  =  clock;	// GCK	(0 pt, 0 inp)
+GLOBALS | 1 | 2 | clock
+
+MACROCELL | 0 | 12 | clkdiv<0>_MC
+ATTRIBUTES | 2155905792 | 0
+OUTPUTMC | 5 | 0 | 5 | 0 | 11 | 0 | 0 | 0 | 12 | 0 | 13
+INPUTS | 13 | clkdiv<0>  | clkdiv<10>  | clkdiv<11>  | clkdiv<3>  | clkdiv<4>  | clkdiv<5>  | clkdiv<6>  | clkdiv<7>  | clkdiv<8>  | clkdiv<9>  | clkdiv<12>  | clkdiv<1>  | clkdiv<2>
+INPUTMC | 13 | 0 | 12 | 0 | 15 | 0 | 14 | 0 | 11 | 0 | 9 | 0 | 8 | 0 | 7 | 0 | 6 | 0 | 4 | 0 | 1 | 0 | 10 | 0 | 0 | 0 | 5
+EQ | 7 | 
+   clkdiv<0> := !clkdiv<0> & !clkdiv<10> & !clkdiv<11> & !clkdiv<3> & 
+	!clkdiv<4> & !clkdiv<5> & !clkdiv<6> & !clkdiv<7> & !clkdiv<8> & 
+	!clkdiv<9> & !clkdiv<12>
+	# !clkdiv<0> & !clkdiv<10> & !clkdiv<11> & !clkdiv<1> & 
+	!clkdiv<2> & !clkdiv<4> & !clkdiv<5> & !clkdiv<6> & !clkdiv<7> & 
+	!clkdiv<8> & !clkdiv<9> & !clkdiv<12>;	// (2 pt, 13 inp)
+   clkdiv<0>.CLK  =  clock;	// GCK	(0 pt, 0 inp)
+GLOBALS | 1 | 2 | clock
+
+MACROCELL | 0 | 15 | clkdiv<10>_MC
+ATTRIBUTES | 2155905792 | 0
+OUTPUTMC | 5 | 0 | 5 | 0 | 11 | 0 | 0 | 0 | 12 | 0 | 13
+INPUTS | 0
+EQ | 2 | 
+   clkdiv<10> := Gnd;	// (0 pt, 0 inp)
+   clkdiv<10>.CLK  =  clock;	// GCK	(0 pt, 0 inp)
+GLOBALS | 1 | 2 | clock
+
+MACROCELL | 0 | 14 | clkdiv<11>_MC
+ATTRIBUTES | 2155905792 | 0
+OUTPUTMC | 5 | 0 | 5 | 0 | 11 | 0 | 0 | 0 | 12 | 0 | 13
+INPUTS | 0
+EQ | 2 | 
+   clkdiv<11> := Gnd;	// (0 pt, 0 inp)
+   clkdiv<11>.CLK  =  clock;	// GCK	(0 pt, 0 inp)
+GLOBALS | 1 | 2 | clock
+
+MACROCELL | 0 | 0 | clkdiv<1>_MC
+ATTRIBUTES | 2155905792 | 0
+OUTPUTMC | 5 | 0 | 5 | 0 | 11 | 0 | 0 | 0 | 12 | 0 | 13
+INPUTS | 12 | clkdiv<0>  | clkdiv<10>  | clkdiv<11>  | clkdiv<1>  | clkdiv<3>  | clkdiv<4>  | clkdiv<5>  | clkdiv<6>  | clkdiv<7>  | clkdiv<8>  | clkdiv<9>  | clkdiv<12>
+INPUTMC | 12 | 0 | 12 | 0 | 15 | 0 | 14 | 0 | 0 | 0 | 11 | 0 | 9 | 0 | 8 | 0 | 7 | 0 | 6 | 0 | 4 | 0 | 1 | 0 | 10
+EQ | 7 | 
+   clkdiv<1> := clkdiv<0> & !clkdiv<10> & !clkdiv<11> & !clkdiv<1> & 
+	!clkdiv<3> & !clkdiv<4> & !clkdiv<5> & !clkdiv<6> & !clkdiv<7> & 
+	!clkdiv<8> & !clkdiv<9> & !clkdiv<12>
+	# !clkdiv<0> & !clkdiv<10> & !clkdiv<11> & clkdiv<1> & 
+	!clkdiv<3> & !clkdiv<4> & !clkdiv<5> & !clkdiv<6> & !clkdiv<7> & 
+	!clkdiv<8> & !clkdiv<9> & !clkdiv<12>;	// (2 pt, 12 inp)
+   clkdiv<1>.CLK  =  clock;	// GCK	(0 pt, 0 inp)
+GLOBALS | 1 | 2 | clock
+
+MACROCELL | 0 | 11 | clkdiv<3>_MC
+ATTRIBUTES | 2155905792 | 0
+OUTPUTMC | 5 | 0 | 5 | 0 | 11 | 0 | 0 | 0 | 12 | 0 | 13
+INPUTS | 13 | clkdiv<0>  | clkdiv<10>  | clkdiv<11>  | clkdiv<1>  | clkdiv<3>  | clkdiv<2>  | clkdiv<4>  | clkdiv<5>  | clkdiv<6>  | clkdiv<7>  | clkdiv<8>  | clkdiv<9>  | clkdiv<12>
+INPUTMC | 13 | 0 | 12 | 0 | 15 | 0 | 14 | 0 | 0 | 0 | 11 | 0 | 5 | 0 | 9 | 0 | 8 | 0 | 7 | 0 | 6 | 0 | 4 | 0 | 1 | 0 | 10
+EQ | 7 | 
+   clkdiv<3> := clkdiv<0> & !clkdiv<10> & !clkdiv<11> & clkdiv<1> & 
+	!clkdiv<3> & clkdiv<2> & !clkdiv<4> & !clkdiv<5> & !clkdiv<6> & 
+	!clkdiv<7> & !clkdiv<8> & !clkdiv<9> & !clkdiv<12>
+	# !clkdiv<0> & !clkdiv<10> & !clkdiv<11> & !clkdiv<1> & 
+	clkdiv<3> & !clkdiv<2> & !clkdiv<4> & !clkdiv<5> & !clkdiv<6> & 
+	!clkdiv<7> & !clkdiv<8> & !clkdiv<9> & !clkdiv<12>;	// (2 pt, 13 inp)
+   clkdiv<3>.CLK  =  clock;	// GCK	(0 pt, 0 inp)
+GLOBALS | 1 | 2 | clock
+
+MACROCELL | 0 | 5 | clkdiv<2>_MC
+ATTRIBUTES | 2155905792 | 0
+OUTPUTMC | 4 | 0 | 5 | 0 | 11 | 0 | 12 | 0 | 13
+INPUTS | 13 | clkdiv<0>  | clkdiv<10>  | clkdiv<11>  | clkdiv<3>  | clkdiv<2>  | clkdiv<4>  | clkdiv<5>  | clkdiv<6>  | clkdiv<7>  | clkdiv<8>  | clkdiv<9>  | clkdiv<12>  | clkdiv<1>
+INPUTMC | 13 | 0 | 12 | 0 | 15 | 0 | 14 | 0 | 11 | 0 | 5 | 0 | 9 | 0 | 8 | 0 | 7 | 0 | 6 | 0 | 4 | 0 | 1 | 0 | 10 | 0 | 0
+EQ | 10 | 
+   clkdiv<2> := !clkdiv<0> & !clkdiv<10> & !clkdiv<11> & !clkdiv<3> & 
+	clkdiv<2> & !clkdiv<4> & !clkdiv<5> & !clkdiv<6> & !clkdiv<7> & 
+	!clkdiv<8> & !clkdiv<9> & !clkdiv<12>
+	# !clkdiv<10> & !clkdiv<11> & !clkdiv<1> & !clkdiv<3> & 
+	clkdiv<2> & !clkdiv<4> & !clkdiv<5> & !clkdiv<6> & !clkdiv<7> & 
+	!clkdiv<8> & !clkdiv<9> & !clkdiv<12>
+	# clkdiv<0> & !clkdiv<10> & !clkdiv<11> & clkdiv<1> & 
+	!clkdiv<3> & !clkdiv<2> & !clkdiv<4> & !clkdiv<5> & !clkdiv<6> & 
+	!clkdiv<7> & !clkdiv<8> & !clkdiv<9> & !clkdiv<12>;	// (3 pt, 13 inp)
+   clkdiv<2>.CLK  =  clock;	// GCK	(0 pt, 0 inp)
+GLOBALS | 1 | 2 | clock
+
+MACROCELL | 0 | 9 | clkdiv<4>_MC
+ATTRIBUTES | 2155905792 | 0
+OUTPUTMC | 5 | 0 | 5 | 0 | 11 | 0 | 0 | 0 | 12 | 0 | 13
+INPUTS | 0
+EQ | 2 | 
+   clkdiv<4> := Gnd;	// (0 pt, 0 inp)
+   clkdiv<4>.CLK  =  clock;	// GCK	(0 pt, 0 inp)
+GLOBALS | 1 | 2 | clock
+
+MACROCELL | 0 | 8 | clkdiv<5>_MC
+ATTRIBUTES | 2155905792 | 0
+OUTPUTMC | 5 | 0 | 5 | 0 | 11 | 0 | 0 | 0 | 12 | 0 | 13
+INPUTS | 0
+EQ | 2 | 
+   clkdiv<5> := Gnd;	// (0 pt, 0 inp)
+   clkdiv<5>.CLK  =  clock;	// GCK	(0 pt, 0 inp)
+GLOBALS | 1 | 2 | clock
+
+MACROCELL | 0 | 7 | clkdiv<6>_MC
+ATTRIBUTES | 2155905792 | 0
+OUTPUTMC | 5 | 0 | 5 | 0 | 11 | 0 | 0 | 0 | 12 | 0 | 13
+INPUTS | 0
+EQ | 2 | 
+   clkdiv<6> := Gnd;	// (0 pt, 0 inp)
+   clkdiv<6>.CLK  =  clock;	// GCK	(0 pt, 0 inp)
+GLOBALS | 1 | 2 | clock
+
+MACROCELL | 0 | 6 | clkdiv<7>_MC
+ATTRIBUTES | 2155905792 | 0
+OUTPUTMC | 5 | 0 | 5 | 0 | 11 | 0 | 0 | 0 | 12 | 0 | 13
+INPUTS | 0
+EQ | 2 | 
+   clkdiv<7> := Gnd;	// (0 pt, 0 inp)
+   clkdiv<7>.CLK  =  clock;	// GCK	(0 pt, 0 inp)
+GLOBALS | 1 | 2 | clock
+
+MACROCELL | 0 | 4 | clkdiv<8>_MC
+ATTRIBUTES | 2155905792 | 0
+OUTPUTMC | 5 | 0 | 5 | 0 | 11 | 0 | 0 | 0 | 12 | 0 | 13
+INPUTS | 0
+EQ | 2 | 
+   clkdiv<8> := Gnd;	// (0 pt, 0 inp)
+   clkdiv<8>.CLK  =  clock;	// GCK	(0 pt, 0 inp)
+GLOBALS | 1 | 2 | clock
+
+MACROCELL | 0 | 1 | clkdiv<9>_MC
+ATTRIBUTES | 2155905792 | 0
+OUTPUTMC | 5 | 0 | 5 | 0 | 11 | 0 | 0 | 0 | 12 | 0 | 13
+INPUTS | 0
+EQ | 2 | 
+   clkdiv<9> := Gnd;	// (0 pt, 0 inp)
+   clkdiv<9>.CLK  =  clock;	// GCK	(0 pt, 0 inp)
+GLOBALS | 1 | 2 | clock
+
+MACROCELL | 0 | 10 | clkdiv<12>_MC
+ATTRIBUTES | 2155905792 | 0
+OUTPUTMC | 5 | 0 | 5 | 0 | 11 | 0 | 0 | 0 | 12 | 0 | 13
+INPUTS | 0
+EQ | 2 | 
+   clkdiv<12> := Gnd;	// (0 pt, 0 inp)
+   clkdiv<12>.CLK  =  clock;	// GCK	(0 pt, 0 inp)
+GLOBALS | 1 | 2 | clock
+
+MACROCELL | 0 | 2 | contador<1>_MC
+ATTRIBUTES | 2285896448 | 0
+OUTPUTMC | 11 | 10 | 12 | 10 | 15 | 15 | 12 | 15 | 15 | 15 | 4 | 15 | 10 | 15 | 11 | 15 | 14 | 13 | 15 | 1 | 14 | 1 | 12
+INPUTS | 1 | contador<0>
+INPUTMC | 1 | 0 | 3
+LCT | 1 | 2 | Internal_Name
+EQ | 2 | 
+   contador<1>.T := contador<0>;	// (1 pt, 1 inp)
+    contador<1>.CLK = clk2;	// CTC	(1 pt, 1 inp)
+
+MACROCELL | 10 | 13 | ANODE<1>_MC
+ATTRIBUTES | 1074004738 | 0
+INPUTS | 0
+EQ | 1 | 
+   !ANODE<1> = Gnd;	// (0 pt, 0 inp)
+
+MACROCELL | 10 | 14 | ANODE<2>_MC
+ATTRIBUTES | 1074004738 | 0
+INPUTS | 0
+EQ | 1 | 
+   !ANODE<2> = Gnd;	// (0 pt, 0 inp)
+
+MACROCELL | 10 | 15 | ANODE<3>_MC
+ATTRIBUTES | 1074004738 | 0
+INPUTS | 2 | contador<0>  | contador<1>
+INPUTMC | 2 | 0 | 3 | 0 | 2
+EQ | 1 | 
+   !ANODE<3> = contador<0> & contador<1>;	// (1 pt, 2 inp)
+
+MACROCELL | 15 | 12 | Display<0>_MC
+ATTRIBUTES | 1074004738 | 0
+INPUTS | 4 | contador<0>  | contador<1>  | switches<1>  | switches<0>
+INPUTMC | 2 | 0 | 3 | 0 | 2
+INPUTP | 2 | 190 | 62
+EQ | 4 | 
+   Display<0> = contador<0> & !contador<1>
+	# !contador<0> & contador<1>
+	# contador<0> & contador<1> & switches<1> & 
+	!switches<0>;	// (3 pt, 4 inp)
+
+MACROCELL | 15 | 15 | Display<1>_MC
+ATTRIBUTES | 1074004738 | 0
+INPUTS | 6 | contador<0>  | contador<1>  | switches<1>  | switches<0>  | pin_boton_entradas<1>  | pin_boton_entradas<0>
+INPUTMC | 2 | 0 | 3 | 0 | 2
+INPUTP | 4 | 190 | 62 | 7 | 10
+EQ | 6 | 
+   !Display<1> = contador<0> & contador<1> & !switches<1>
+	# contador<0> & contador<1> & !switches<0>
+	# !contador<0> & !contador<1> & 
+	pin_boton_entradas<1> & pin_boton_entradas<0>
+	# !contador<0> & !contador<1> & 
+	!pin_boton_entradas<1> & !pin_boton_entradas<0>;	// (4 pt, 6 inp)
+
+MACROCELL | 15 | 4 | Display<2>_MC
+ATTRIBUTES | 1074004738 | 0
+INPUTS | 6 | contador<0>  | contador<1>  | pin_boton_entradas<1>  | pin_boton_entradas<0>  | switches<1>  | switches<0>
+INPUTMC | 2 | 0 | 3 | 0 | 2
+INPUTP | 4 | 7 | 10 | 190 | 62
+EQ | 8 | 
+   !Display<2> = !contador<0> & !contador<1> & 
+	!pin_boton_entradas<1>
+	# !contador<0> & !contador<1> & 
+	pin_boton_entradas<0>
+	# contador<0> & contador<1> & switches<1> & 
+	!switches<0>
+	# contador<0> & contador<1> & !switches<1> & 
+	switches<0>;	// (4 pt, 6 inp)
+
+MACROCELL | 15 | 10 | Display<3>_MC
+ATTRIBUTES | 1074004738 | 0
+INPUTS | 5 | contador<0>  | contador<1>  | switches<1>  | switches<0>  | pin_boton_entradas<1>
+INPUTMC | 2 | 0 | 3 | 0 | 2
+INPUTP | 3 | 190 | 62 | 7
+EQ | 4 | 
+   !Display<3> = contador<0> & contador<1> & switches<1>
+	# contador<0> & contador<1> & switches<0>
+	# !contador<0> & !contador<1> & 
+	!pin_boton_entradas<1>;	// (3 pt, 5 inp)
+
+MACROCELL | 15 | 11 | Display<4>_MC
+ATTRIBUTES | 1074004738 | 0
+INPUTS | 2 | contador<0>  | contador<1>
+INPUTMC | 2 | 0 | 3 | 0 | 2
+EQ | 2 | 
+   Display<4> = contador<0> & !contador<1>
+	# !contador<0> & contador<1>;	// (2 pt, 2 inp)
+
+MACROCELL | 15 | 14 | Display<5>_MC
+ATTRIBUTES | 1074004738 | 0
+INPUTS | 2 | contador<0>  | contador<1>
+INPUTMC | 2 | 0 | 3 | 0 | 2
+EQ | 2 | 
+   Display<5> = contador<0> & !contador<1>
+	# !contador<0> & contador<1>;	// (2 pt, 2 inp)
+
+MACROCELL | 13 | 15 | Display<6>_MC
+ATTRIBUTES | 1074004738 | 0
+INPUTS | 6 | contador<0>  | contador<1>  | pin_boton_entradas<1>  | pin_boton_entradas<0>  | switches<1>  | switches<0>
+INPUTMC | 2 | 0 | 3 | 0 | 2
+INPUTP | 4 | 7 | 10 | 190 | 62
+EQ | 8 | 
+   !Display<6> = !contador<0> & !contador<1> & 
+	!pin_boton_entradas<1>
+	# !contador<0> & !contador<1> & 
+	pin_boton_entradas<0>
+	# contador<0> & contador<1> & switches<1> & 
+	switches<0>
+	# contador<0> & contador<1> & !switches<1> & 
+	!switches<0>;	// (4 pt, 6 inp)
+
+MACROCELL | 1 | 4 | pin_boton<0>_MC
+ATTRIBUTES | 135004930 | 0
+INPUTS | 1 | botones<0>
+INPUTP | 1 | 218
+LCT | 1 | 2 | Internal_Name
+EQ | 2 | 
+   pin_boton<0>.D = botones<0>;	// (1 pt, 1 inp)
+    pin_boton<0>.LH = !contador<0> & !contador<1>;	// CTC	(1 pt, 2 inp)
+
+MACROCELL | 1 | 2 | pin_boton<1>_MC
+ATTRIBUTES | 135004930 | 0
+INPUTS | 1 | botones<1>
+INPUTP | 1 | 142
+LCT | 1 | 2 | Internal_Name
+EQ | 2 | 
+   pin_boton<1>.D = botones<1>;	// (1 pt, 1 inp)
+    pin_boton<1>.LH = !contador<0> & !contador<1>;	// CTC	(1 pt, 2 inp)
+
+MACROCELL | 1 | 14 | pin_switch<0>_MC
+ATTRIBUTES | 787234 | 0
+INPUTS | 3 | switches<0>  | contador<0>  | contador<1>
+INPUTMC | 2 | 0 | 3 | 0 | 2
+INPUTP | 1 | 62
+EQ | 2 | 
+   pin_switch<0>.D = switches<0>;	// (1 pt, 1 inp)
+    pin_switch<0>.LH = contador<0> & contador<1>;	// PTC	(1 pt, 2 inp)
+
+MACROCELL | 1 | 12 | pin_switch<1>_MC
+ATTRIBUTES | 787234 | 0
+INPUTS | 3 | switches<1>  | contador<0>  | contador<1>
+INPUTMC | 2 | 0 | 3 | 0 | 2
+INPUTP | 1 | 190
+EQ | 2 | 
+   pin_switch<1>.D = switches<1>;	// (1 pt, 1 inp)
+    pin_switch<1>.LH = contador<0> & contador<1>;	// PTC	(1 pt, 2 inp)
+
+PIN | clock | 16384 | 16 | LVCMOS18 | 59 | 14 | 0 | 15 | 0 | 14 | 0 | 9 | 0 | 8 | 0 | 7 | 0 | 6 | 0 | 4 | 0 | 1 | 0 | 10 | 0 | 5 | 0 | 11 | 0 | 0 | 0 | 12 | 0 | 13
+PIN | switches<1> | 64 | 16 | LVCMOS18 | 190 | 6 | 15 | 12 | 15 | 15 | 15 | 4 | 15 | 10 | 13 | 15 | 1 | 12
+PIN | switches<0> | 64 | 16 | LVCMOS18 | 62 | 6 | 15 | 12 | 15 | 15 | 15 | 4 | 15 | 10 | 13 | 15 | 1 | 14
+PIN | pin_boton_entradas<1> | 64 | 16 | LVCMOS18 | 7 | 4 | 15 | 15 | 15 | 4 | 15 | 10 | 13 | 15
+PIN | pin_boton_entradas<0> | 64 | 16 | LVCMOS18 | 10 | 3 | 15 | 15 | 15 | 4 | 13 | 15
+PIN | botones<0> | 64 | 16 | LVCMOS18 | 218 | 1 | 1 | 4
+PIN | botones<1> | 64 | 16 | LVCMOS18 | 142 | 1 | 1 | 2
+PIN | ANODE<0> | 536871040 | 0 | LVCMOS18 | 192
+PIN | ANODE<1> | 536871040 | 0 | LVCMOS18 | 194
+PIN | ANODE<2> | 536871040 | 0 | LVCMOS18 | 195
+PIN | ANODE<3> | 536871040 | 0 | LVCMOS18 | 196
+PIN | Display<0> | 536871040 | 0 | LVCMOS18 | 86
+PIN | Display<1> | 536871040 | 0 | LVCMOS18 | 81
+PIN | Display<2> | 536871040 | 0 | LVCMOS18 | 90
+PIN | Display<3> | 536871040 | 0 | LVCMOS18 | 88
+PIN | Display<4> | 536871040 | 0 | LVCMOS18 | 87
+PIN | Display<5> | 536871040 | 0 | LVCMOS18 | 82
+PIN | Display<6> | 536871040 | 0 | LVCMOS18 | 95
+PIN | pin_boton<0> | 536871040 | 0 | LVCMOS18 | 5
+PIN | pin_boton<1> | 536871040 | 0 | LVCMOS18 | 3
+PIN | pin_switch<0> | 536871040 | 0 | LVCMOS18 | 12
+PIN | pin_switch<1> | 536871040 | 0 | LVCMOS18 | 8

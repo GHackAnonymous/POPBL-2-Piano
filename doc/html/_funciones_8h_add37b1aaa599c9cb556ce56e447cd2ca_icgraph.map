@@ -1,0 +1,5 @@
+<map id="escribir_nota" name="escribir_nota">
+<area shape="rect" id="node2" href="$_funciones_8h.html#ad10cfb118e5a277013cfad3607a0a6e8" title="Se guarda la cadena de estructuras creadas en un fichero. " alt="" coords="149,5,261,32"/>
+<area shape="rect" id="node3" href="$_funciones_8h.html#aa5f6626115698494570957133816b8c7" title="Genera un fichero en base a las notas que sean recibidas a la hora de presionar teclas. " alt="" coords="309,5,368,32"/>
+<area shape="rect" id="node4" href="$_main_8c.html#ae66f6b31b5ad750f1fe042a706a4e3d4" title="main" alt="" coords="416,5,467,32"/>
+</map>

@@ -1,0 +1,58 @@
+Pin Freeze File:  version P.20131013
+
+2C256144 XC2C256-7-TQ144
+botones<0> S:PIN143
+botones<1> S:PIN94
+clock S:PIN38
+pin_boton_entradas<0> S:PIN9
+pin_boton_entradas<1> S:PIN6
+switches<0> S:PIN39
+switches<1> S:PIN124
+ANODE<0> S:PIN126
+ANODE<1> S:PIN128
+ANODE<2> S:PIN129
+ANODE<3> S:PIN130
+Display<0> S:PIN56
+Display<1> S:PIN53
+Display<2> S:PIN60
+Display<3> S:PIN58
+Display<4> S:PIN57
+Display<5> S:PIN54
+Display<6> S:PIN61
+pin_boton<0> S:PIN5
+pin_boton<1> S:PIN3
+pin_switch<0> S:PIN10
+pin_switch<1> S:PIN7
+
+
+;The remaining section of the .gyd file is for documentation purposes only.
+;It shows where your internal equations were placed in the last successful fit.
+
+PARTITION FB1_1 clkdiv<1> clkdiv<9> contador<1> contador<0>
+		 clkdiv<8> clkdiv<2> clkdiv<7> clkdiv<6>
+		 clkdiv<5> clkdiv<4> clkdiv<12> clkdiv<3>
+		 clkdiv<0> clk2 clkdiv<11> clkdiv<10>
+		
+PARTITION FB2_3 pin_boton<1>
+PARTITION FB2_5 pin_boton<0>
+PARTITION FB2_13 pin_switch<1>
+PARTITION FB2_15 pin_switch<0>
+
+
+
+
+
+
+
+
+
+PARTITION FB11_13 ANODE<0> ANODE<1> ANODE<2> ANODE<3>
+		
+
+
+PARTITION FB14_16 Display<6>
+
+PARTITION FB16_5 Display<2>
+PARTITION FB16_11 Display<3> Display<4> Display<0>
+PARTITION FB16_15 Display<5> Display<1>
+
